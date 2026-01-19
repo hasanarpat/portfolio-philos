@@ -3,6 +3,17 @@
 Cyberpunk-inspired personal portfolio built with Next.js.  
 A living system of projects, gallery, blog, and a layered Archive with subcategory detail views.
 
+       ██████╗██████╗  ██████╗ ██╗    ██╗
+      ██╔════╝██╔══██╗██╔═══██╗██║    ██║
+      ██║     ██████╔╝██║   ██║██║ █╗ ██║
+      ██║     ██╔══██╗██║   ██║██║███╗██║
+      ╚██████╗██║  ██║╚██████╔╝╚███╔███╔╝
+       ╚═════╝╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝ 
+
+![ASCII Terminal Aesthetic](./public/ascii-art-glsl-shader-terminal-aesthetic.png)
+
+Cyberpunk Portfolio
+
 ## Highlights
 - Terminal aesthetics with animated matrix backdrop
 - Archive index + category + entry pages (`/archive/[slug]/[entry]`)
