@@ -96,7 +96,8 @@ const projects = [
     year: "2024-2025",
     status: "Live",
     metrics: ["Next.js 15 SSR", "Payload 3.0 Local API", "Zero-latency Sync"],
-    image: "/dark-brutalist-architecture-at-night.png",
+    image: "/memento_home.png",
+    url: "https://memento-mori-rouge.vercel.app/",
   },
 ]
 
