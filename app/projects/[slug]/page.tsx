@@ -369,8 +369,28 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="text-foreground/70 mt-4 max-w-3xl leading-relaxed">{renderInlineMarkdown(project.summary)}</div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="border border-primary/10 p-6 bg-card/10 space-y-4">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+          {/* Top Row: Image (3) + Specs (1) */}
+          <div className="lg:col-span-3 border border-primary/10 bg-card/10 overflow-hidden group">
+            <div className="relative aspect-video">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700 grayscale group-hover:grayscale-0"
+                priority
+                sizes="(max-width: 1280px) 100vw, 1200px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60" />
+              <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+                <div className="font-mono text-[10px] text-primary/40 uppercase tracking-[0.3em]">
+                  Artifact Visualization: Captured in Production
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-2 border border-primary/10 p-6 bg-card/10 space-y-4">
             <div className="font-mono text-[10px] text-primary/60 uppercase tracking-widest">[SYSTEM.SPEC]</div>
             <div className="space-y-3">
               <div className="flex justify-between border-b border-primary/5 pb-2">
@@ -388,7 +408,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             </div>
           </div>
 
-          <div className="border border-primary/10 p-6 bg-card/10 space-y-4">
+          {/* Bottom Row: Stack (2) + Metrics (2) */}
+          <div className="lg:col-span-2 border border-primary/10 p-6 bg-card/10 space-y-4">
             <div className="font-mono text-[10px] text-primary/60 uppercase tracking-widest">[CORE.STACK]</div>
             <div className="flex flex-wrap gap-2">
               {project.stack.map((tech) => (
@@ -402,7 +423,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             </div>
           </div>
 
-          <div className="border border-primary/10 p-6 bg-card/10 space-y-4">
+          <div className="lg:col-span-2 border border-primary/10 p-6 bg-card/10 space-y-4">
             <div className="font-mono text-[10px] text-primary/60 uppercase tracking-widest">[KEY.METRICS]</div>
             <div className="space-y-2">
               {project.metrics.map((metric) => (
@@ -411,25 +432,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   <span className="font-serif text-foreground/80">{metric}</span>
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="border border-primary/10 bg-card/10 overflow-hidden group">
-          <div className="relative aspect-video">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700 grayscale group-hover:grayscale-0"
-              priority
-              sizes="(max-width: 1280px) 100vw, 1200px"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60" />
-            <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
-              <div className="font-mono text-[10px] text-primary/40 uppercase tracking-[0.3em]">
-                Artifact Visualization: Captured in Production
-              </div>
             </div>
           </div>
         </div>
