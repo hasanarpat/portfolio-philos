@@ -370,7 +370,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-          {/* Top Row: Image (3) + Specs (1) */}
           <div className="lg:col-span-3 border border-primary/10 bg-card/10 overflow-hidden group">
             <div className="relative aspect-video">
               <Image
