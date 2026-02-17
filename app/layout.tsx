@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { Navigation } from "@/components/navigation"
+import { LightboxProvider } from "@/components/providers/lightbox-provider"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -40,9 +41,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`font-sans antialiased`}>
-        <Navigation />
-        {children}
-        <Analytics />
+        <LightboxProvider>
+          <Navigation />
+          {children}
+          <Analytics />
+        </LightboxProvider>
       </body>
     </html>
   )

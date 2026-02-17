@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import { ChevronLeft } from "lucide-react"
 import { MarkdownRenderer, renderInlineMarkdown } from "@/lib/markdown"
 import { ALL_PROJECTS, Project } from "@/lib/projects"
+import { ZoomableImage } from "@/components/ui/zoomable-image"
 
 export const metadata = {
   title: "Project — Systems Built",
@@ -64,22 +65,14 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
           <div className="lg:col-span-3 border border-primary/10 bg-card/10 overflow-hidden group">
-            <div className="relative aspect-video">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700 grayscale group-hover:grayscale-0"
-                priority
-                sizes="(max-width: 1280px) 100vw, 1200px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60" />
-              <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
-                <div className="font-mono text-[10px] text-primary/40 uppercase tracking-[0.3em]">
-                  Artifact Visualization: Captured in Production
-                </div>
-              </div>
-            </div>
+            <ZoomableImage
+              src={project.image}
+              alt={project.title}
+              caption="Artifact Visualization: Captured in Production"
+              className="my-0 border-0 bg-transparent"
+              priority
+              sizes="(max-width: 1280px) 100vw, 1200px"
+            />
           </div>
 
           <div className="lg:col-span-2 border border-primary/10 p-6 bg-card/10 space-y-4">

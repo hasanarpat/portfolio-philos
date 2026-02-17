@@ -1,5 +1,6 @@
 import React from "react"
 import Image from "next/image"
+import { ZoomableImage } from "@/components/ui/zoomable-image"
 
 export const renderInlineMarkdown = (text: string): React.ReactNode[] => {
     // 1. Handle Bold: **text**
@@ -149,20 +150,12 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
                             src.includes('chateau.jpg') ? '/memento_cart.png' : src;
 
                         return (
-                            <figure key={i} className="my-12 border border-primary/20 bg-card/10 overflow-hidden">
-                                <div className="relative aspect-video">
-                                    <Image
-                                        src={imageSrc}
-                                        alt={alt}
-                                        fill
-                                        className="object-cover opacity-80 hover:opacity-100 transition-opacity"
-                                        sizes="(max-width: 768px) 100vw, 800px"
-                                    />
-                                </div>
-                                <figcaption className="p-4 border-t border-primary/10 font-mono text-[10px] uppercase tracking-widest text-primary/60 text-center">
-                                    [{alt}]
-                                </figcaption>
-                            </figure>
+                            <ZoomableImage
+                                key={i}
+                                src={imageSrc}
+                                alt={alt}
+                                caption={alt}
+                            />
                         );
                     }
                 }
