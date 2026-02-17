@@ -5,119 +5,13 @@ import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+import { getAllProjects, Project } from "@/lib/projects"
 
-const projects = [
-  {
-    id: 1,
-    slug: "distributed-event-system",
-    title: "DistributedCache.io", // Note: The title in grid is different from detail page in [slug]/page.tsx
-    type: "Production System",
-    stack: ["Rust", "Redis", "Kubernetes"],
-    description:
-      "High-throughput distributed caching layer serving 50M+ requests/day. Built for resilience with automatic failover and geographic replication.",
-    year: "2023-2024",
-    status: "Live",
-    metrics: ["99.99% uptime", "< 5ms p99 latency", "50M+ req/day"],
-    image: "/distributed-cache-system-dark-technical-diagram.png",
-  },
-  {
-    id: 2,
-    slug: "real-time-data-pipeline",
-    title: "ObservabilityKit",
-    type: "Open Source",
-    stack: ["TypeScript", "Node.js", "OpenTelemetry"],
-    description:
-      "Batteries-included observability toolkit for Node.js applications. Zero-config tracing, metrics, and structured logging with minimal overhead.",
-    year: "2023",
-    status: "Maintained",
-    metrics: ["2.5k GitHub stars", "150k+ weekly downloads", "Active community"],
-    image: "/observability-dashboard-dark-cyberpunk.png",
-  },
-  {
-    id: 3,
-    slug: "neural-archive",
-    title: "Neural Archive",
-    type: "Experiment",
-    stack: ["Python", "PyTorch", "React"],
-    description:
-      "Semantic search engine for personal archives using neural embeddings. Explores how machines can help us remember and connect ideas.",
-    year: "2024",
-    status: "Prototype",
-    metrics: ["10k+ documents indexed", "Sub-second search", "Self-hosted"],
-    image: "/neural-network-semantic-search-visualization.png",
-  },
-  {
-    id: 4,
-    slug: "protocol-explorer",
-    title: "Protocol Explorer",
-    type: "Educational",
-    stack: ["Go", "WebAssembly", "Three.js"],
-    description:
-      "Interactive visualization of network protocols. Watch TCP handshakes, DNS queries, and HTTP requests in real-time 3D space.",
-    year: "2023",
-    status: "Demo",
-    metrics: ["5k+ students used", "15 protocols visualized", "Browser-based"],
-    image: "/network-protocol-3d-visualization-cyberpunk.png",
-  },
-  {
-    id: 5,
-    slug: "infrastructure-orchestration",
-    title: "TimeCapsule DB",
-    type: "Production System",
-    stack: ["PostgreSQL", "Rust", "Docker"],
-    description:
-      "Immutable append-only database for audit trails and compliance. Every write is permanent, every read is verifiable.",
-    year: "2022-2023",
-    status: "Live",
-    metrics: ["Zero data loss", "Cryptographic verification", "SOC 2 compliant"],
-    image: "/immutable-database-architecture-dark.png",
-  },
-  {
-    id: 6,
-    slug: "terminal-aesthetics",
-    title: "Terminal Aesthetics",
-    type: "Art Project",
-    stack: ["JavaScript", "WebGL", "GLSL"],
-    description:
-      "Generative art project creating terminal-inspired visuals. ASCII meets shaders in real-time algorithmic compositions.",
-    year: "2024",
-    status: "Ongoing",
-    metrics: ["100+ compositions", "WebGL shaders", "Generative"],
-    image: "/ascii-art-glsl-shader-terminal-aesthetic.png",
-  },
-  {
-    id: 7,
-    slug: "memento-mori",
-    title: "Memento Mori",
-    type: "Production System",
-    stack: ["Next.js 15", "Payload CMS 3.0", "MongoDB"],
-    description:
-      "A high-end e-commerce platform for dark fashion artifacts, leveraging a headless-first architecture for zero-latency performance.",
-    year: "2024-2025",
-    status: "Live",
-    metrics: ["Next.js 15 SSR", "Payload 3.0 Local API", "Zero-latency Sync"],
-    image: "/memento_home.png",
-    url: "https://memento-mori-rouge.vercel.app/",
-  },
-  {
-    id: 8,
-    slug: "masalci-kedi",
-    title: "Masalcı Kedi",
-    type: "Production System",
-    stack: ["Astro v5.1", "Gemini AI", "Zod", "TypeScript"],
-    description:
-      "A deterministic narrative engine fusing Astro's island architecture with generative AI for high-fidelity, zero-latency storytelling.",
-    year: "2025",
-    status: "Beta",
-    metrics: ["Zero-JS Hydration", "100/100 Lighthouse", "Edge-Native"],
-    image: "/masalci_kedi_cover.png",
-    url: "https://masalcikedi.com",
-  },
-]
+const projects = getAllProjects()
 
 const filterTypes = ["All", "Production System", "Open Source", "Experiment", "Educational", "Art Project"]
 
-const buildTerminalLines = (project: (typeof projects)[0]) => [
+const buildTerminalLines = (project: Project) => [
   `> ACCESSING ${project.title.toUpperCase().replace(/\s/g, "_")}...`,
   `> STATUS: ${project.status}`,
   `> STACK: ${project.stack.join(" | ")}`,
@@ -131,7 +25,7 @@ const buildTerminalLines = (project: (typeof projects)[0]) => [
 ]
 
 // Hacker Modal Component
-function HackerModal({ project, isVisible }: { project: typeof projects[0]; isVisible: boolean }) {
+function HackerModal({ project, isVisible }: { project: Project; isVisible: boolean }) {
   const [typedLines, setTypedLines] = useState<string[]>([])
   const terminalLines = buildTerminalLines(project)
 
