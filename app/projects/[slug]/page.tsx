@@ -54,8 +54,9 @@ export const metadata = {
   title: "Project — Systems Built",
 }
 
-export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
-  const project = projects[params.slug as keyof typeof projects]
+export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const project = projects[slug as keyof typeof projects]
 
   if (!project) {
     notFound()

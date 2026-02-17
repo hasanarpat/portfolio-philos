@@ -2,12 +2,15 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 
 const projects = [
   {
     id: 1,
-    title: "DistributedCache.io",
+    slug: "distributed-event-system",
+    title: "DistributedCache.io", // Note: The title in grid is different from detail page in [slug]/page.tsx
     type: "Production System",
     stack: ["Rust", "Redis", "Kubernetes"],
     description:
@@ -19,6 +22,7 @@ const projects = [
   },
   {
     id: 2,
+    slug: "real-time-data-pipeline",
     title: "ObservabilityKit",
     type: "Open Source",
     stack: ["TypeScript", "Node.js", "OpenTelemetry"],
@@ -31,6 +35,7 @@ const projects = [
   },
   {
     id: 3,
+    slug: "neural-archive",
     title: "Neural Archive",
     type: "Experiment",
     stack: ["Python", "PyTorch", "React"],
@@ -43,6 +48,7 @@ const projects = [
   },
   {
     id: 4,
+    slug: "protocol-explorer",
     title: "Protocol Explorer",
     type: "Educational",
     stack: ["Go", "WebAssembly", "Three.js"],
@@ -55,6 +61,7 @@ const projects = [
   },
   {
     id: 5,
+    slug: "infrastructure-orchestration",
     title: "TimeCapsule DB",
     type: "Production System",
     stack: ["PostgreSQL", "Rust", "Docker"],
@@ -67,6 +74,7 @@ const projects = [
   },
   {
     id: 6,
+    slug: "terminal-aesthetics",
     title: "Terminal Aesthetics",
     type: "Art Project",
     stack: ["JavaScript", "WebGL", "GLSL"],
@@ -152,9 +160,12 @@ function HackerModal({ project, isVisible }: { project: typeof projects[0]; isVi
 
         {/* Action Buttons */}
         <div className="flex gap-3 mt-6 pt-4 border-t border-primary/30">
-          <button className="flex-1 px-4 py-2 border border-primary bg-primary/20 text-primary hover:bg-primary/30 transition-colors text-glow">
-            [View Demo]
-          </button>
+          <Link 
+            href={`/projects/${project.slug}`}
+            className="flex-1 px-4 py-2 border border-primary bg-primary/20 text-primary hover:bg-primary/30 transition-colors text-glow text-center"
+          >
+            [View Details]
+          </Link>
           <button className="flex-1 px-4 py-2 border border-secondary bg-secondary/20 text-secondary hover:bg-secondary/30 transition-colors">
             [GitHub]
           </button>
@@ -168,6 +179,7 @@ export function ProjectsGrid() {
   const [filter, setFilter] = useState("All")
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const router = useRouter()
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLDivElement>({ threshold: 0.05 })
 
   const filteredProjects = filter === "All" ? projects : projects.filter((p) => p.type === filter)
@@ -233,6 +245,7 @@ export function ProjectsGrid() {
               key={project.id}
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
+              onClick={() => router.push(`/projects/${project.slug}`)}
               className={`scatter-item group relative border border-primary/20 bg-card/20 overflow-hidden transition-all duration-500 hover:border-primary/50 cursor-pointer ${
                 index % 3 === 0 ? "md:col-span-2" : ""
               } ${isVisible ? "visible" : ""}`}
