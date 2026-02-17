@@ -85,6 +85,19 @@ const projects = [
     metrics: ["100+ compositions", "WebGL shaders", "Generative"],
     image: "/ascii-art-glsl-shader-terminal-aesthetic.png",
   },
+  {
+    id: 7,
+    slug: "memento-mori",
+    title: "Memento Mori",
+    type: "Production System",
+    stack: ["Next.js 15", "Payload CMS 3.0", "MongoDB"],
+    description:
+      "A high-end e-commerce platform for dark fashion artifacts, leveraging a headless-first architecture for zero-latency performance.",
+    year: "2024-2025",
+    status: "Live",
+    metrics: ["Next.js 15 SSR", "Payload 3.0 Local API", "Zero-latency Sync"],
+    image: "/dark-brutalist-architecture-at-night.png",
+  },
 ]
 
 const filterTypes = ["All", "Production System", "Open Source", "Experiment", "Educational", "Art Project"]
@@ -160,7 +173,7 @@ function HackerModal({ project, isVisible }: { project: typeof projects[0]; isVi
 
         {/* Action Buttons */}
         <div className="flex gap-3 mt-6 pt-4 border-t border-primary/30">
-          <Link 
+          <Link
             href={`/projects/${project.slug}`}
             className="flex-1 px-4 py-2 border border-primary bg-primary/20 text-primary hover:bg-primary/30 transition-colors text-glow text-center"
           >
@@ -225,11 +238,10 @@ export function ProjectsGrid() {
             <button
               key={type}
               onClick={() => setFilter(type)}
-              className={`px-5 py-2 font-mono text-xs uppercase tracking-wider border transition-all duration-300 hover-lift ${
-                filter === type
-                  ? "border-primary bg-primary/20 text-primary text-glow"
-                  : "border-primary/20 text-foreground/60 hover:border-primary/50 hover:text-primary"
-              }`}
+              className={`px-5 py-2 font-mono text-xs uppercase tracking-wider border transition-all duration-300 hover-lift ${filter === type
+                ? "border-primary bg-primary/20 text-primary text-glow"
+                : "border-primary/20 text-foreground/60 hover:border-primary/50 hover:text-primary"
+                }`}
             >
               {type}
             </button>
@@ -246,15 +258,14 @@ export function ProjectsGrid() {
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
               onClick={() => router.push(`/projects/${project.slug}`)}
-              className={`scatter-item group relative border border-primary/20 bg-card/20 overflow-hidden transition-all duration-500 hover:border-primary/50 cursor-pointer ${
-                index % 3 === 0 ? "md:col-span-2" : ""
-              } ${isVisible ? "visible" : ""}`}
+              className={`scatter-item group relative border border-primary/20 bg-card/20 overflow-hidden transition-all duration-500 hover:border-primary/50 cursor-pointer ${index % 3 === 0 ? "md:col-span-2" : ""
+                } ${isVisible ? "visible" : ""}`}
               style={{ animationDelay: `${index * 0.15}s` }}
             >
               {/* Hacker Modal Overlay */}
-              <HackerModal 
-                project={project} 
-                isVisible={hoveredProject === project.id} 
+              <HackerModal
+                project={project}
+                isVisible={hoveredProject === project.id}
               />
 
               {/* Project Image */}
