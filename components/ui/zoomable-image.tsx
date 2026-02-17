@@ -14,10 +14,15 @@ export function ZoomableImage({ src, alt, caption, className, ...props }: Zoomab
     const { openLightbox } = useLightbox()
 
     return (
-        <figure className={cn("group relative my-12 border border-primary/20 bg-card/10 overflow-hidden", className)}>
+        <figure
+            className={cn("group relative my-12 border border-primary/20 bg-card/10 overflow-hidden js-lightbox-item", className)}
+            data-src={src}
+            data-alt={alt}
+            data-caption={caption || ""}
+        >
             <div
                 className="relative aspect-video cursor-zoom-in"
-                onClick={() => openLightbox(src as string, alt, caption)}
+                onClick={() => openLightbox(src as string)}
             >
                 <Image
                     src={src}
