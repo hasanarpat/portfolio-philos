@@ -309,6 +309,174 @@ A refined, frictionless three-step process built for reliability.
 Memento Mori represents the intersection of subculture aesthetics and high-end web architecture. It demonstrates proficiency in full-stack JavaScript development, headless CMS integration, and the implementation of secure, scalable commerce logic.
     `,
   },
+  "masalci-kedi": {
+    id: 8,
+    type: "Production System",
+    title: "Masalcı Kedi",
+    status: "BETA",
+    year: "2025",
+    summary:
+      "A deterministic narrative engine fusing Astro's island architecture with generative AI for high-fidelity, zero-latency storytelling.",
+    stack: ["Astro v5.1", "Gemini AI", "Zod", "TypeScript", "Tailwind"],
+    metrics: ["Zero-JS Hydration", "100/100 Lighthouse", "Edge-Native"],
+    image: "/masalci_kedi_cover.png",
+    url: "https://masalcikedi.com",
+    notes: [
+      "Zero-JS baseline providing absolute performance on legacy hardware.",
+      "Deterministic build rituals ensure completely immutable artifacts.",
+      "AI media pipeline with 16:9 aspect ratio heuristics for modern discovery.",
+    ],
+    techAnalysis: {
+      title: "Architectural Philosophy: The Island of Determinism",
+      content:
+        "Masalcı Kedi rejects the complexity of modern SPAs in favor of **Astro Island Architecture**. By treating JavaScript as an optional enhancement rather than a requirement, the platform achieves a 'Zero-JS' baseline. This ensures that the narrative experience is delivered with zero latency, regardless of network conditions.",
+    },
+    directoryMap: `src/
+├── components/      # UI Atoms & Molecules (The Visual Layer)
+├── content/         # Markdown Artifacts (The Core Narrative Store)
+│   ├── config.ts    # Schema Protocols
+│   └── stories/     # Individual Tale Manifests
+├── layouts/         # Structural Blueprints (The Skeletal Framework)
+├── pages/           # Deterministic Routing (The Navigation Ley-Lines)
+└── styles/          # Global Aesthetic Consonants (Tailwind Directives)`,
+    workflows: [
+      {
+        title: "The Narrative Lifecycle",
+        steps: [
+          "Agent (Architect) submits Story Markdown to Content Collection.",
+          "Zod Schema performs a rigorous Validation Ritual.",
+          "Astro Builder synthesizes the Static Site artifacts.",
+          "Files are deployed immutably to the Global Edge (Vercel).",
+        ],
+      },
+    ],
+    fullContent: `
+# Masalcı Kedi — The Alchemy of Narrative and Performance
+
+In an era of digital saturation, "Masalcı Kedi" emerges as a paradigm shift in educational content delivery, fusing the structural rigidity of modern web architecture with the fluid creativity of generative AI. This platform is not merely a repository of stories but a deterministic engine designed to deliver high-fidelity artifacts with near-zero latency, ensuring that the digital bridge between child and story remains unbroken by the "mortal realm" of network bottlenecks.
+
+---
+
+## 🏛️ Architectural Foundations: The Island of Determinism
+
+The architectural philosophy of Masalcı Kedi centers on the **Astro Island Architecture**, a ritual of isolation where JavaScript is only permitted to manifest where interaction is absolutely essential. For a content-centric platform, this provides a "Zero-JS" baseline, projecting static HTML artifacts to the edge with unmatched efficiency.
+
+### 1. The Zenith of Performance: Zero-JS Hydration
+By leveraging **Astro v5.1**, we’ve achieved a state of absolute performance. The system bypasses the traditional overhead of SPA frameworks, ensuring that the critical rendering path remains unencumbered. This is not just a performance optimization; it is a commitment to accessibility, allowing the engine to run on legacy hardware and low-bandwidth channels without compromise.
+
+### 2. Static Site Synthesis (SSG)
+Every story is pre-compiled during the *Build Ritual*. This ensures that the frontend is decoupled from any backend volatility, creating an immutable state that is served via global CDN edge nodes.
+
+---
+
+## ⚙️ Engineering Rituals & Deterministic Flows
+
+The backend operations—or what we call the **Digital Forge**—are governed by strict type-safe protocols to ensure that no corrupted artifact ever reaches the production realm.
+
+### 1. Content Orchestration via Type-Safe Artifacts
+We utilize **Astro Content Collections** coupled with **Zod** schema validation. Every markdown entry must satisfy a complex interface before it is processed by the build pipeline.
+
+> [!IMPORTANT]
+> **Deterministic Validation:** The Zod schema acts as a gatekeeper in the "Mortal Realm" (Development), ensuring that every story includes mandatory SEO metadata, reading duration heuristics, and verified image paths.
+
+![Caption: The "Educational Stories" category page, dynamically generated from type-safe content collections.](/masalci_kedi_category.png)
+
+\`\`\`typescript
+// The schema ritual for story artifacts
+const storiesCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().min(10),
+    description: z.string().max(160),
+    image: z.string().url().or(z.string().regex(/^\//)), 
+    category: z.enum(['hayvan-hikayeleri', 'egitici-hikayeler', 'dogasever-cocuk-hikayeleri']),
+    readingTime: z.number().positive(),
+  }),
+});
+\`\`\`
+
+### 2. The Visionary Eye: AI Media Pipeline
+Visual storytelling is powered by a custom orchestration of **Google Gemini (Imagen)** models. The engineering challenge was not just generation, but the adaptation of assets for modern search surfaces like Google Discover.
+
+> [!TIP]
+> **Aspect Ratio Heuristics:** To maximize visibility in the "Discovery Void," we implemented a 16:9 post-processing ritual for key narrative assets, moving away from standard 1:1 squares to capture premium real estate in user feeds.
+
+![Caption: The "Story Grid" interface, showcasing the 16:9 aspect ratio and category filtering.](/masalci_kedi_story_grid.png)
+
+---
+
+## 📜 System Provenance (Structure)
+
+The directory map reflects the separation of concerns, ensuring that the *Rituals* (logic) are distinct from the *Artifacts* (content).
+
+\`\`\`text
+src/
+├── components/      # UI Atoms & Molecules (The Visual Layer)
+├── content/         # Markdown Artifacts (The Core Narrative Store)
+│   ├── config.ts    # Schema Protocols
+│   └── stories/     # Individual Tale Manifests
+├── layouts/         # Structural Blueprints (The Skeletal Framework)
+├── pages/           # Deterministic Routing (The Navigation Ley-Lines)
+└── styles/          # Global Aesthetic Consonants (Tailwind Directives)
+\`\`\`
+
+---
+
+## 🔄 The Narrative Lifecycle
+
+The following sequence visualizes the transformation of a raw idea into a production-ready narrative artifact.
+
+\`\`\`mermaid
+sequenceDiagram
+    participant A as Agent (Architect)
+    participant C as Content Collection (Zod)
+    participant B as Astro Builder (The Forge)
+    participant V as Vercel Edge (The Void)
+    
+    A->>C: Submit Story Markdown
+    Note right of C: Validation Ritual
+    C-->>A: Throws Error if Missing Meta
+    A->>C: Corrects Artifact
+    C->>B: Schema Verified
+    B->>B: Static Site Synthesis
+    B->>V: Deploy Immutable Result
+    Note over V: Distributed to Global Edge
+\`\`\`
+
+### 📚 The Reading Experience
+
+The detail page is designed for immersion, removing all distractions to focus on the narrative.
+
+![Caption: Detail view of "Doğruyu Söyleyen Minik Fil Timo," demonstrating the clean, distraction-free reading environment.](/masalci_kedi_detail.png)
+
+### 🧠 Educational Reinforcement
+
+Every story concludes with a "Deduced Lesson" and "Related Stories" to encourage continuous engagement and moral reinforcement.
+
+![Caption: The lesson summary and related stories section, powered by vector similarity search.](/masalci_kedi_lesson.png)
+
+---
+
+## 🔮 Engineering Post-Mortem: Overcoming the Void
+
+The development journey was not without its shadows. Two primary challenges tested the resilience of our architecture.
+
+### 1. The Schema Enigma
+During the integration of the "Nature Lovers" (Doğa Sever) category, the build pipeline collapsed due to an unmapped enum value. This failure highlighted the strength of our **Deterministic Validation**; the system preferred to halt completely rather than serve a malformed page.
+
+### 2. The Resolution Threshold
+Google’s requirement for 1200px wide imagery conflicted with our initial 1024px square AI generations. This necessitated a reconfiguration of our **Media Pipeline Rituals**, implementing a new prompt-engineered 16:9 generation phase for high-risk, high-reward content.
+
+> [!CAUTION]
+> **Performance Regressions:** While images are aesthetic artifacts, their weight can induce latency. We mitigated this by utilizing \`sharp\` to convert all assets into highly-efficient WebP formats, maintaining the 100/100 Lighthouse sanctity.
+
+---
+
+## 🏁 Final Synthesis
+
+"Masalcı Kedi" stands as a monument to the intersection of code and soul. By treating every line of TypeScript as a ritual and every content entry as a sacred artifact, we have built a platform that transcends simple technical requirements, offering a glimpse into the future of automated, high-performance web engineering.
+    `,
+  },
 } as const
 
 export const metadata = {

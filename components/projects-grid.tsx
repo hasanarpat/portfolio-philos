@@ -99,6 +99,20 @@ const projects = [
     image: "/memento_home.png",
     url: "https://memento-mori-rouge.vercel.app/",
   },
+  {
+    id: 8,
+    slug: "masalci-kedi",
+    title: "Masalcı Kedi",
+    type: "Production System",
+    stack: ["Astro v5.1", "Gemini AI", "Zod", "TypeScript"],
+    description:
+      "A deterministic narrative engine fusing Astro's island architecture with generative AI for high-fidelity, zero-latency storytelling.",
+    year: "2025",
+    status: "Beta",
+    metrics: ["Zero-JS Hydration", "100/100 Lighthouse", "Edge-Native"],
+    image: "/masalci_kedi_cover.png",
+    url: "https://masalcikedi.com",
+  },
 ]
 
 const filterTypes = ["All", "Production System", "Open Source", "Experiment", "Educational", "Art Project"]
