@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ChevronLeft } from "lucide-react"
+import { ArrowLeft, ExternalLink, Calendar, Layers, Activity, FileText, Github, ChevronLeft } from "lucide-react"
 import { MarkdownRenderer, renderInlineMarkdown } from "@/lib/markdown"
 import { ALL_PROJECTS, Project } from "@/lib/projects"
 import { ZoomableImage } from "@/components/ui/zoomable-image"
@@ -49,16 +49,30 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               <div className="font-mono text-xs text-primary uppercase tracking-widest">[PROJECT.DOSSIER]</div>
               <h1 className="font-serif text-4xl md:text-5xl text-foreground mt-3">{project.title}</h1>
             </div>
-            {projectWithUrl.url && (
-              <a
-                href={projectWithUrl.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono text-xs uppercase tracking-widest border border-primary px-4 py-2 bg-primary/10 text-primary hover:bg-primary/20 transition-all text-glow"
-              >
-                [LAUNCH.SYSTEM]
-              </a>
-            )}
+            <div className="flex flex-col sm:flex-row gap-4">
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 border border-secondary/30 bg-secondary/5 text-secondary hover:bg-secondary/10 transition-colors font-mono uppercase text-xs tracking-wider"
+                >
+                  <Github className="w-4 h-4" />
+                  <span>See Source Code</span>
+                </a>
+              )}
+              {projectWithUrl.url && (
+                <a
+                  href={projectWithUrl.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 border border-primary bg-primary/10 text-primary hover:bg-primary/20 transition-colors font-mono uppercase text-xs tracking-wider group"
+                >
+                  <span>Launch System</span>
+                  <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+              )}
+            </div>
           </div>
           <div className="text-foreground/70 mt-4 max-w-3xl leading-relaxed">{renderInlineMarkdown(project.summary)}</div>
         </div>
@@ -80,7 +94,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <div className="space-y-3">
               <div className="flex justify-between border-b border-primary/5 pb-2">
                 <span className="text-primary/40 font-mono text-[10px] uppercase">Type</span>
-                <span className="text-foreground/90 font-serif">{project.type}</span>
+                <span className="text-foreground/90 font-serif">{project.type.join(" / ")}</span>
               </div>
               <div className="flex justify-between border-b border-primary/5 pb-2">
                 <span className="text-primary/40 font-mono text-[10px] uppercase">Timeline</span>

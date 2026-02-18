@@ -3,7 +3,7 @@ export interface Project {
     id: number
     slug: string
     title: string
-    type: string
+    type: string[]
     status: string
     year: string
     summary: string // Used for detail page
@@ -12,6 +12,7 @@ export interface Project {
     metrics: string[]
     image: string
     url?: string
+    github?: string
     check?: boolean
     notes?: string[]
     techAnalysis?: {
@@ -31,115 +32,115 @@ export interface Project {
 }
 
 export const ALL_PROJECTS: Record<string, Project> = {
-    "distributed-event-system": {
-        id: 1,
-        slug: "distributed-event-system",
-        type: "Production System",
-        title: "Distributed Event System", // Grid title: DistributedCache.io (will need to handle this)
-        status: "PRODUCTION",
-        year: "2024",
-        summary:
-            "Event-driven backbone built for zero data loss and precise replay. Designed to stay resilient under spiky, unpredictable workloads.",
-        description:
-            "High-throughput distributed caching layer serving 50M+ requests/day. Built for resilience with automatic failover and geographic replication.",
-        stack: ["Rust", "Kafka", "PostgreSQL", "Kubernetes"], // Grid adds Redis
-        metrics: ["99.99% uptime", "4.2B events/month", "< 40ms publish latency"],
-        image: "/distributed-cache-system-dark-technical-diagram.png",
-        notes: [
-            "Idempotent handlers with deterministic replay windows.",
-            "Dual-write mitigation with ledger reconciliation.",
-            "Realtime dashboards for drift detection and lag budgets.",
-        ],
-    },
-    "real-time-data-pipeline": {
-        id: 2,
-        slug: "real-time-data-pipeline",
-        type: "Open Source",
-        title: "ObservabilityKit", // Changed to match grid title preference for consistency
-        status: "LIVE",
-        year: "2023",
-        summary:
-            "Streaming aggregation layer focused on sub-second insights and graceful backpressure under load.",
-        description:
-            "Batteries-included observability toolkit for Node.js applications. Zero-config tracing, metrics, and structured logging with minimal overhead.",
-        stack: ["TypeScript", "Node.js", "OpenTelemetry"], // Grid stack
-        metrics: ["< 800ms latency", "2.1M events/min", "24/7 alerting"], // Hybrid metrics
-        image: "/observability-dashboard-dark-cyberpunk.png",
-        notes: [
-            "Time-windowed aggregation with adaptive buffering.",
-            "Hot path optimized for 99th percentile latency.",
-            "Operator tooling for manual replays and audits.",
-        ],
-    },
-    "neural-archive": {
-        id: 3,
-        slug: "neural-archive",
-        title: "Neural Archive",
-        type: "Experiment",
-        status: "PROTOTYPE",
-        year: "2024",
-        summary:
-            "Semantic search engine for personal archives using neural embeddings. Explores how machines can help us remember and connect ideas.",
-        description:
-            "Semantic search engine for personal archives using neural embeddings. Explores how machines can help us remember and connect ideas.",
-        stack: ["Python", "PyTorch", "React"],
-        metrics: ["10k+ documents indexed", "Sub-second search", "Self-hosted"],
-        image: "/neural-network-semantic-search-visualization.png",
-    },
-    "protocol-explorer": {
-        id: 4,
-        slug: "protocol-explorer",
-        title: "Protocol Explorer",
-        type: "Educational",
-        status: "DEMO",
-        year: "2023",
-        summary:
-            "Interactive visualization of network protocols. Watch TCP handshakes, DNS queries, and HTTP requests in real-time 3D space.",
-        description:
-            "Interactive visualization of network protocols. Watch TCP handshakes, DNS queries, and HTTP requests in real-time 3D space.",
-        stack: ["Go", "WebAssembly", "Three.js"],
-        metrics: ["5k+ students used", "15 protocols visualized", "Browser-based"],
-        image: "/network-protocol-3d-visualization-cyberpunk.png",
-    },
-    "infrastructure-orchestration": {
-        id: 5,
-        slug: "infrastructure-orchestration",
-        title: "TimeCapsule DB", // Grid title
-        type: "Production System",
-        status: "DEPLOYED",
-        year: "2023",
-        summary:
-            "A control plane for managing hundreds of services across regions with steady, observable rollouts.",
-        description:
-            "Immutable append-only database for audit trails and compliance. Every write is permanent, every read is verifiable.",
-        stack: ["PostgreSQL", "Rust", "Docker"], // Grid stack
-        metrics: ["200+ services", "5 regions", "60% faster rollouts"],
-        image: "/immutable-database-architecture-dark.png",
-        notes: [
-            "Policy-driven deploys with progressive exposure.",
-            "Custom operators for environment drift correction.",
-            "Unified audit trail with diff snapshots.",
-        ],
-    },
-    "terminal-aesthetics": {
-        id: 6,
-        slug: "terminal-aesthetics",
-        title: "Terminal Aesthetics",
-        type: "Art Project",
-        status: "ONGOING",
-        year: "2024",
-        summary:
-            "Generative art project creating terminal-inspired visuals. ASCII meets shaders in real-time algorithmic compositions.",
-        description:
-            "Generative art project creating terminal-inspired visuals. ASCII meets shaders in real-time algorithmic compositions.",
-        stack: ["JavaScript", "WebGL", "GLSL"],
-        metrics: ["100+ compositions", "WebGL shaders", "Generative"],
-        image: "/ascii-art-glsl-shader-terminal-aesthetic.png",
-    },
+    // "distributed-event-system": {
+    //     id: 1,
+    //     slug: "distributed-event-system",
+    //     type: "Production System",
+    //     title: "Distributed Event System", // Grid title: DistributedCache.io (will need to handle this)
+    //     status: "PRODUCTION",
+    //     year: "2024",
+    //     summary:
+    //         "Event-driven backbone built for zero data loss and precise replay. Designed to stay resilient under spiky, unpredictable workloads.",
+    //     description:
+    //         "High-throughput distributed caching layer serving 50M+ requests/day. Built for resilience with automatic failover and geographic replication.",
+    //     stack: ["Rust", "Kafka", "PostgreSQL", "Kubernetes"], // Grid adds Redis
+    //     metrics: ["99.99% uptime", "4.2B events/month", "< 40ms publish latency"],
+    //     image: "/distributed-cache-system-dark-technical-diagram.png",
+    //     notes: [
+    //         "Idempotent handlers with deterministic replay windows.",
+    //         "Dual-write mitigation with ledger reconciliation.",
+    //         "Realtime dashboards for drift detection and lag budgets.",
+    //     ],
+    // },
+    // "real-time-data-pipeline": {
+    //     id: 2,
+    //     slug: "real-time-data-pipeline",
+    //     type: "Open Source",
+    //     title: "ObservabilityKit", // Changed to match grid title preference for consistency
+    //     status: "LIVE",
+    //     year: "2023",
+    //     summary:
+    //         "Streaming aggregation layer focused on sub-second insights and graceful backpressure under load.",
+    //     description:
+    //         "Batteries-included observability toolkit for Node.js applications. Zero-config tracing, metrics, and structured logging with minimal overhead.",
+    //     stack: ["TypeScript", "Node.js", "OpenTelemetry"], // Grid stack
+    //     metrics: ["< 800ms latency", "2.1M events/min", "24/7 alerting"], // Hybrid metrics
+    //     image: "/observability-dashboard-dark-cyberpunk.png",
+    //     notes: [
+    //         "Time-windowed aggregation with adaptive buffering.",
+    //         "Hot path optimized for 99th percentile latency.",
+    //         "Operator tooling for manual replays and audits.",
+    //     ],
+    // },
+    // "neural-archive": {
+    //     id: 3,
+    //     slug: "neural-archive",
+    //     title: "Neural Archive",
+    //     type: "Experiment",
+    //     status: "PROTOTYPE",
+    //     year: "2024",
+    //     summary:
+    //         "Semantic search engine for personal archives using neural embeddings. Explores how machines can help us remember and connect ideas.",
+    //     description:
+    //         "Semantic search engine for personal archives using neural embeddings. Explores how machines can help us remember and connect ideas.",
+    //     stack: ["Python", "PyTorch", "React"],
+    //     metrics: ["10k+ documents indexed", "Sub-second search", "Self-hosted"],
+    //     image: "/neural-network-semantic-search-visualization.png",
+    // },
+    // "protocol-explorer": {
+    //     id: 4,
+    //     slug: "protocol-explorer",
+    //     title: "Protocol Explorer",
+    //     type: "Educational",
+    //     status: "DEMO",
+    //     year: "2023",
+    //     summary:
+    //         "Interactive visualization of network protocols. Watch TCP handshakes, DNS queries, and HTTP requests in real-time 3D space.",
+    //     description:
+    //         "Interactive visualization of network protocols. Watch TCP handshakes, DNS queries, and HTTP requests in real-time 3D space.",
+    //     stack: ["Go", "WebAssembly", "Three.js"],
+    //     metrics: ["5k+ students used", "15 protocols visualized", "Browser-based"],
+    //     image: "/network-protocol-3d-visualization-cyberpunk.png",
+    // },
+    // "infrastructure-orchestration": {
+    //     id: 5,
+    //     slug: "infrastructure-orchestration",
+    //     title: "TimeCapsule DB", // Grid title
+    //     type: "Production System",
+    //     status: "DEPLOYED",
+    //     year: "2023",
+    //     summary:
+    //         "A control plane for managing hundreds of services across regions with steady, observable rollouts.",
+    //     description:
+    //         "Immutable append-only database for audit trails and compliance. Every write is permanent, every read is verifiable.",
+    //     stack: ["PostgreSQL", "Rust", "Docker"], // Grid stack
+    //     metrics: ["200+ services", "5 regions", "60% faster rollouts"],
+    //     image: "/immutable-database-architecture-dark.png",
+    //     notes: [
+    //         "Policy-driven deploys with progressive exposure.",
+    //         "Custom operators for environment drift correction.",
+    //         "Unified audit trail with diff snapshots.",
+    //     ],
+    // },
+    // "terminal-aesthetics": {
+    //     id: 6,
+    //     slug: "terminal-aesthetics",
+    //     title: "Terminal Aesthetics",
+    //     type: "Art Project",
+    //     status: "ONGOING",
+    //     year: "2024",
+    //     summary:
+    //         "Generative art project creating terminal-inspired visuals. ASCII meets shaders in real-time algorithmic compositions.",
+    //     description:
+    //         "Generative art project creating terminal-inspired visuals. ASCII meets shaders in real-time algorithmic compositions.",
+    //     stack: ["JavaScript", "WebGL", "GLSL"],
+    //     metrics: ["100+ compositions", "WebGL shaders", "Generative"],
+    //     image: "/ascii-art-glsl-shader-terminal-aesthetic.png",
+    // },
     "memento-mori": {
         id: 7,
         slug: "memento-mori",
-        type: "Production System",
+        type: ["Production System", "Open Source"],
         title: "Memento Mori",
         status: "LIVE",
         year: "2024-2025",
@@ -151,6 +152,7 @@ export const ALL_PROJECTS: Record<string, Project> = {
         metrics: ["Sub-second TTFB", "Zero-latency Local API", "36/36 Static Pages"],
         image: "/memento_home.png",
         url: "https://memento-mori-rouge.vercel.app/",
+        github: "https://github.com/hasanarpat/memento-mori",
         notes: [
             "Monolithic Headless architecture sharing DB connections and React components.",
             "Multi-stage authentication with email verification and timing attack protection.",
@@ -393,9 +395,10 @@ Memento Mori represents the intersection of subculture aesthetics and high-end w
     },
     "masalci-kedi": {
         id: 8,
-        type: "Production System",
+        type: ["Production System", "Open Source"],
         title: "Masalcı Kedi",
         url: "https://masalci-kedi.vercel.app/",
+        github: "https://github.com/hasanarpat/masalci-kedi",
         slug: "masalci-kedi",
         status: "BETA",
         year: "2025",
@@ -566,7 +569,9 @@ Google’s requirement for 1200px wide imagery conflicted with our initial 1024p
         id: 9,
         slug: "restaurant-food-delivery",
         title: "Restaurant Food Delivery",
-        type: "Full-Stack Architecture",
+        url: "https://antepli-pizza.vercel.app/",
+        github: "https://github.com/hasanarpat/Restaurant-Food-Delivery-NextJS",
+        type: ["Production System", "Open Source"],
         status: "LIVE",
         year: "2024",
         summary:

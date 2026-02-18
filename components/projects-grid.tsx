@@ -88,9 +88,20 @@ function HackerModal({ project, isVisible }: { project: Project; isVisible: bool
           >
             [View Details]
           </Link>
-          <button className="flex-1 px-4 py-2 border border-secondary bg-secondary/20 text-secondary hover:bg-secondary/30 transition-colors">
-            [GitHub]
-          </button>
+          {project.github ? (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 px-4 py-2 border border-secondary bg-secondary/20 text-secondary hover:bg-secondary/30 transition-colors text-center"
+            >
+              [GitHub]
+            </a>
+          ) : (
+            <button disabled className="flex-1 px-4 py-2 border border-secondary/20 bg-secondary/5 text-secondary/40 cursor-not-allowed">
+              [Private]
+            </button>
+          )}
         </div>
       </div>
     </div>
@@ -104,7 +115,7 @@ export function ProjectsGrid() {
   const router = useRouter()
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLDivElement>({ threshold: 0.05 })
 
-  const filteredProjects = filter === "All" ? projects : projects.filter((p) => p.type === filter)
+  const filteredProjects = filter === "All" ? projects : projects.filter((p) => p.type.includes(filter))
 
   // Trigger animations after mount
   useEffect(() => {
@@ -196,7 +207,7 @@ export function ProjectsGrid() {
               {/* Project Info */}
               <div className="p-6 md:p-8">
                 <div className="flex items-start justify-between mb-4">
-                  <div className="font-mono text-xs text-primary/70 uppercase tracking-wider">[{project.type}]</div>
+                  <div className="font-mono text-xs text-primary/70 uppercase tracking-wider">[{project.type.join(" / ")}]</div>
                   <div className="font-mono text-xs text-muted-foreground">{project.year}</div>
                 </div>
 
