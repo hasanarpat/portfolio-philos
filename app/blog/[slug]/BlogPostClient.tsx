@@ -6,6 +6,13 @@ import { useEffect, useState } from "react"
 
 import { BLOG_POSTS } from "@/lib/blog"
 
+// Helper to get YouTube ID
+function getYouTubeId(url: string) {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/
+    const match = url.match(regExp)
+    return (match && match[2].length === 11) ? match[2] : null
+}
+
 export function BlogPostClient({ slug }: { slug: string }) {
     const router = useRouter()
     const [isLoaded, setIsLoaded] = useState(false)
@@ -124,6 +131,34 @@ export function BlogPostClient({ slug }: { slug: string }) {
                             )
                         }
 
+                        // Handle YouTube links [Watch: Title](url) or just [text](url) where url is youtube
+                        const linkMatch = paragraph.match(/^\[(.*?)\]\((.*?)\)$/)
+                        if (linkMatch) {
+                            const [_, text, url] = linkMatch
+                            const youtubeId = getYouTubeId(url)
+                            if (youtubeId) {
+                                return (
+                                    <div key={index} className="my-8">
+                                        <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-primary/20 bg-black/50">
+                                            <iframe
+                                                width="100%"
+                                                height="100%"
+                                                src={`https://www.youtube.com/embed/${youtubeId}`}
+                                                title={text}
+                                                frameBorder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowFullScreen
+                                                className="absolute top-0 left-0 w-full h-full"
+                                            ></iframe>
+                                        </div>
+                                        <p className="mt-3 text-sm text-muted-foreground text-center font-mono italic">
+                                            [{text}]
+                                        </p>
+                                    </div>
+                                )
+                            }
+                        }
+
                         return (
                             <div key={index} className="text-foreground/80 leading-relaxed mb-6 whitespace-pre-line">
                                 {paragraph.split("\n").map((line, i) => {
@@ -140,6 +175,11 @@ export function BlogPostClient({ slug }: { slug: string }) {
                                                 if (linkMatch) {
                                                     // This is very naive, supports only one link per segment. Sufficient for now.
                                                     const [full, text, url] = linkMatch
+                                                    const youtubeId = getYouTubeId(url)
+
+                                                    // Verify if it is a youtube link, if so render as a link with icon or similar (optional)
+                                                    // For now just render regular link
+
                                                     const [pre, post] = part.split(full)
                                                     return (
                                                         <span key={j}>
