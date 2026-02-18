@@ -5,28 +5,28 @@ import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 
 const projects = [
   {
-    title: "Distributed Event System",
-    problem: "Processing millions of events with zero data loss",
-    approach: "Event sourcing, CQRS, idempotent handlers",
-    status: "PRODUCTION",
-    year: "2024",
-    href: "/projects/distributed-event-system",
-  },
-  {
-    title: "Infrastructure Orchestration",
-    problem: "Managing 200+ microservices across regions",
-    approach: "Custom control plane, declarative config, gradual rollouts",
-    status: "DEPLOYED",
-    year: "2023",
-    href: "/projects/infrastructure-orchestration",
-  },
-  {
-    title: "Real-time Data Pipeline",
-    problem: "Sub-second latency on streaming aggregations",
-    approach: "Time-windowed computation, backpressure handling",
+    title: "Memento Mori",
+    problem: "Balancing high-end e-commerce aesthetics with sub-second performance",
+    approach: "Monolithic Headless (Next.js 15 + Payload 3.0), Zero-latency API",
     status: "LIVE",
-    year: "2023",
-    href: "/projects/real-time-data-pipeline",
+    year: "2026",
+    href: "/projects/memento-mori",
+  },
+  {
+    title: "Masalcı Kedi",
+    problem: "Achieving perfect SEO scores and zero-latency performance for content-heavy sites",
+    approach: "Astro Island Architecture, Zero-JS hydration, Deterministic builds",
+    status: "BETA",
+    year: "2025",
+    href: "/projects/masalci-kedi",
+  },
+  {
+    title: "DupliCheck",
+    problem: "Preventing accidental bulk orders by detecting duplicate items in real-time",
+    approach: "Self-recognition heuristics, Shadow DOM isolation, Event-driven strategy",
+    status: "LIVE",
+    year: "2026",
+    href: "/projects/duplicheck",
   },
 ]
 
@@ -35,20 +35,19 @@ export function SelectedWork() {
 
   return (
     <section ref={sectionRef} className="px-6 md:px-12 py-24 max-w-6xl">
-      <h2 
-        className={`text-xs font-mono text-primary tracking-widest uppercase mb-12 text-glow transition-all duration-700 ${
-          sectionVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        }`}
+      <h2
+        className={`text-xs font-mono text-primary tracking-widest uppercase mb-12 text-glow transition-all duration-700 ${sectionVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
       >
         &gt;&gt; SELECTED_MISSIONS.log
       </h2>
 
       <div className="space-y-12">
         {projects.map((project, index) => (
-          <ProjectCard 
-            key={project.title} 
-            project={project} 
-            index={index} 
+          <ProjectCard
+            key={project.title}
+            project={project}
+            index={index}
             parentVisible={sectionVisible}
           />
         ))}
@@ -57,11 +56,11 @@ export function SelectedWork() {
   )
 }
 
-function ProjectCard({ 
-  project, 
-  index, 
-  parentVisible 
-}: { 
+function ProjectCard({
+  project,
+  index,
+  parentVisible
+}: {
   project: typeof projects[number]
   index: number
   parentVisible: boolean
@@ -69,9 +68,8 @@ function ProjectCard({
   return (
     <Link
       href={project.href}
-      className={`grid grid-cols-1 md:grid-cols-12 gap-6 pb-12 border-b border-primary/20 last:border-0 hover:border-primary/40 transition-all duration-700 group hover-lift cursor-pointer ${
-        parentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
+      className={`grid grid-cols-1 md:grid-cols-12 gap-6 pb-12 border-b border-primary/20 last:border-0 hover:border-primary/40 transition-all duration-700 group hover-lift cursor-pointer ${parentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
       style={{ transitionDelay: `${0.15 + index * 0.1}s` }}
     >
       <div className="md:col-span-1">

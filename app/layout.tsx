@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { Navigation } from "@/components/navigation"
 import { LightboxProvider } from "@/components/providers/lightbox-provider"
+import { Footer } from "@/components/footer"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -45,6 +46,7 @@ export default function RootLayout({
           <Navigation />
           {children}
           <Analytics />
+          <Footer />
         </LightboxProvider>
       </body>
     </html>

@@ -29,12 +29,12 @@ export function Hero() {
   }, [])
 
   return (
-    <section 
+    <section
       ref={heroRef}
       className="min-h-screen flex items-center px-6 md:px-12 lg:px-16 max-w-[1800px] mx-auto relative overflow-hidden"
     >
       {/* Subtle animated background gradient */}
-      <div 
+      <div
         className="absolute inset-0 opacity-30 transition-transform duration-700 ease-out"
         style={{
           background: "radial-gradient(ellipse at 30% 50%, oklch(0.7 0.12 145 / 0.08) 0%, transparent 50%)",
@@ -47,10 +47,9 @@ export function Hero() {
         <div className="flex flex-col justify-center space-y-8 max-w-xl">
           {/* Headline with text reveal */}
           <div className="overflow-hidden">
-            <h1 
-              className={`font-serif text-5xl md:text-6xl lg:text-7xl text-primary text-glow tracking-[0.02em] leading-[1.05] transition-all duration-1000 ease-out ${
-                isLoaded ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
-              }`}
+            <h1
+              className={`font-serif text-5xl md:text-6xl lg:text-7xl text-primary text-glow tracking-[0.02em] leading-[1.05] transition-all duration-1000 ease-out ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+                }`}
             >
               Systems that think in <span className="text-secondary text-glow-copper italic">decades</span>.
             </h1>
@@ -64,16 +63,15 @@ export function Hero() {
               Long-term systems · Deliberate craft · Relentless execution
             </p>
             <p className="text-muted-foreground text-xs md:text-sm font-mono italic">
-              Building the infrastructure of tomorrow, today.
+              Vi Veri Veniversum Vivus Vici
             </p>
           </div>
         </div>
 
         {/* Mobile/Tablet Terminal */}
         <div
-          className={`lg:hidden relative min-h-[320px] border border-primary/20 box-glow animate-breathe transition-all duration-1000 ease-out ${
-            isLoaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-          }`}
+          className={`lg:hidden relative min-h-[320px] border border-primary/20 box-glow animate-breathe transition-all duration-1000 ease-out ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
           style={{
             transitionDelay: "0.3s",
           }}
@@ -82,10 +80,9 @@ export function Hero() {
         </div>
 
         {/* Right 65%: Animated terminal with Matrix effect */}
-        <div 
-          className={`hidden lg:block relative min-h-[600px] border border-primary/20 box-glow animate-breathe transition-all duration-1000 ease-out ${
-            isLoaded ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0"
-          }`}
+        <div
+          className={`hidden lg:block relative min-h-[600px] border border-primary/20 box-glow animate-breathe transition-all duration-1000 ease-out ${isLoaded ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0"
+            }`}
           style={{
             transitionDelay: "0.3s",
             transform: isLoaded ? `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px)` : "translateX(48px)",
