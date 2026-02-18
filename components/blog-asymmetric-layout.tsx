@@ -11,7 +11,7 @@ const blogPosts = [
     title: "Designing for Decades: The Long-Term Architecture Philosophy",
     excerpt:
       "Most software is built to last months, maybe years. What if we designed systems with a 20-year horizon in mind? Exploring trade-offs, dependencies, and resilience patterns.",
-    date: "2024-03-15",
+    date: "2026-03-15",
     readTime: "12 min",
     category: "Architecture",
     featured: true,
@@ -21,7 +21,7 @@ const blogPosts = [
     title: "The Terminal as a Design Pattern",
     excerpt:
       "Why command-line interfaces outlast most GUI applications, and what that teaches us about building lasting digital experiences.",
-    date: "2024-02-28",
+    date: "2026-02-28",
     readTime: "8 min",
     category: "Design",
     featured: false,
@@ -31,7 +31,7 @@ const blogPosts = [
     title: "Observability Beyond Metrics: Building Systems That Explain Themselves",
     excerpt:
       "Modern observability isn't just about dashboards and alerts. It's about creating systems with introspection capabilities built into their core.",
-    date: "2024-02-10",
+    date: "2026-02-10",
     readTime: "15 min",
     category: "Systems",
     featured: true,
@@ -40,7 +40,7 @@ const blogPosts = [
     id: 4,
     title: "Rust, Complexity, and the Cost of Safety",
     excerpt: "An honest reflection on building production systems in Rust after two years of deployment.",
-    date: "2024-01-22",
+    date: "2026-01-22",
     readTime: "10 min",
     category: "Engineering",
     featured: false,
@@ -50,7 +50,7 @@ const blogPosts = [
     title: "Against Premature Abstraction",
     excerpt:
       "Code should reveal intention, not hide it. On the balance between DRY principles and clarity in system design.",
-    date: "2023-12-18",
+    date: "2026-12-18",
     readTime: "7 min",
     category: "Philosophy",
     featured: false,
@@ -60,7 +60,7 @@ const blogPosts = [
     title: "Network Protocols I've Known and Loved",
     excerpt:
       "A nostalgic tour through SMTP, IRC, and the beauty of simple, text-based protocols that still power the internet.",
-    date: "2023-11-30",
+    date: "2026-11-30",
     readTime: "11 min",
     category: "Systems",
     featured: false,
@@ -119,11 +119,10 @@ export function BlogAsymmetricLayout() {
                   <button
                     key={cat}
                     onClick={() => setFilter(cat)}
-                    className={`px-4 py-2 font-mono text-xs uppercase tracking-wider border transition-all duration-300 ${
-                      filter === cat
-                        ? "border-primary bg-primary/20 text-primary text-glow"
-                        : "border-border/50 text-foreground/60 hover:border-primary/50 hover:text-primary"
-                    }`}
+                    className={`px-4 py-2 font-mono text-xs uppercase tracking-wider border transition-all duration-300 ${filter === cat
+                      ? "border-primary bg-primary/20 text-primary text-glow"
+                      : "border-border/50 text-foreground/60 hover:border-primary/50 hover:text-primary"
+                      }`}
                   >
                     {cat}
                     {cat !== "all" && (
@@ -177,9 +176,8 @@ export function BlogAsymmetricLayout() {
               <Link
                 key={post.id}
                 href={`/blog/${post.id}`}
-                className={`scatter-item block border border-primary/20 bg-card/20 p-6 hover:border-primary/50 hover:bg-card/30 transition-all duration-300 group hover-lift ${
-                  isVisible ? "visible" : ""
-                }`}
+                className={`scatter-item block border border-primary/20 bg-card/20 p-6 hover:border-primary/50 hover:bg-card/30 transition-all duration-300 group hover-lift ${isVisible ? "visible" : ""
+                  }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-start justify-between mb-3">
