@@ -44,18 +44,18 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         </div>
 
         <div className="border border-primary/20 bg-card/20 p-8 md:p-10 box-glow">
-          <div className="flex justify-between items-start">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-6 md:gap-0">
             <div>
               <div className="font-mono text-xs text-primary uppercase tracking-widest">[PROJECT.DOSSIER]</div>
               <h1 className="font-serif text-4xl md:text-5xl text-foreground mt-3">{project.title}</h1>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-row gap-4 flex-wrap">
               {project.github && (
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 border border-secondary/30 bg-secondary/5 text-secondary hover:bg-secondary/10 transition-colors font-mono uppercase text-xs tracking-wider"
+                  className="inline-flex items-center gap-2 px-6 py-3 border border-secondary/30 bg-secondary/5 text-secondary hover:bg-secondary/10 transition-colors font-mono uppercase text-xs tracking-wider flex-1 justify-center whitespace-nowrap"
                 >
                   <Github className="w-4 h-4" />
                   <span>See Source Code</span>
@@ -66,7 +66,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   href={projectWithUrl.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 border border-primary bg-primary/10 text-primary hover:bg-primary/20 transition-colors font-mono uppercase text-xs tracking-wider group"
+                  className="inline-flex items-center gap-2 px-6 py-3 border border-primary bg-primary/10 text-primary hover:bg-primary/20 transition-colors font-mono uppercase text-xs tracking-wider group flex-1 justify-center whitespace-nowrap"
                 >
                   <span>Launch System</span>
                   <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
