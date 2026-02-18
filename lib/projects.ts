@@ -562,6 +562,173 @@ Google’s requirement for 1200px wide imagery conflicted with our initial 1024p
 "Masalcı Kedi" stands as a monument to the intersection of code and soul. By treating every line of TypeScript as a ritual and every content entry as a sacred artifact, we have built a platform that transcends simple technical requirements, offering a glimpse into the future of automated, high-performance web engineering.
     `,
     },
+    "restaurant-food-delivery": {
+        id: 9,
+        slug: "restaurant-food-delivery",
+        title: "Restaurant Food Delivery",
+        type: "Full-Stack Architecture",
+        status: "LIVE",
+        year: "2024",
+        summary:
+            "A modern full-stack food delivery application focusing on performance, reliability, and user experience. Features a module-based architecture, optimized infinite scroll, and robust security.",
+        description:
+            "This project goes beyond a standard food ordering app by focusing on performance, reliability, and user experience. By combining a strict Domain-Driven Backend with a smooth, interactive Frontend, the system bridges the gap between complex data handling and a seamless user interface.",
+        stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion", "MongoDB", "Zod", "Jose"],
+        metrics: ["30-40% Faster (Lean)", "80% Less Load", "Secure Auth"],
+        image: "/restaurant/cover.png",
+        techAnalysis: {
+            title: "Optimized Infinite Scroll",
+            content:
+                "Infinite scrolling can often lead to performance issues if not handled correctly. We implemented a **smart loading mechanism** using `IntersectionObserver` to ensure data loads smoothly as the user scrolls. We use **Mongoose Lean Logic** to return plain JavaScript objects instead of heavy database documents, reducing data processing overhead by **30-40%**.",
+        },
+        directoryMap: `Restaurant-Food-Delivery/
+├── src/
+│   ├── modules/            # Core Business Logic
+│   │   └── [feature]/      # Service, Repository, Types
+│   ├── core/               # Global Utilities (Errors, Config)
+│   ├── components/         # UI Components
+│   │   ├── ui/             # Basic Elements (Input, Button)
+│   │   └── molecules/      # Complex Components
+│   └── app/                # Next.js App Router (Pages & API)`,
+        workflows: [
+            {
+                title: "Optimized Infinite Scroll",
+                steps: [
+                    "User scrolls to bottom, triggering Scroll Observer.",
+                    "State Lock checks if already loading.",
+                    "If Ready, lock activates and API requests more items.",
+                    "Database queries in Lean Mode (Plain JS Objects).",
+                    "Data returned, items shown, and lock releases.",
+                ],
+            },
+            {
+                title: "Cursor-Based Pagination",
+                steps: [
+                    "Client requests items after a specific timestamp cursor.",
+                    "Server fetches next batch based on stable sort order.",
+                    "Prevents duplicate items even if new data is added during scroll.",
+                ],
+            },
+        ],
+        uxInsights: [
+            {
+                title: "Staggered Animations",
+                description:
+                    "Items enter smoothly using Framer Motion's staggered effects, making the list feel polished rather than abrupt.",
+            },
+            {
+                title: "Smart Search",
+                description:
+                    "Search requests are debounced by 500ms, reducing server load by 80% while maintaining a responsive feel.",
+            },
+        ],
+        fullContent: `
+# Restaurant Food Delivery — Modern Full-Stack Architecture
+
+This project goes beyond a standard food ordering app by focusing on **performance**, **reliability**, and **user experience**. By combining a strict Domain-Driven Backend with a smooth, interactive Frontend, the system bridges the gap between complex data handling and a seamless user interface. It proves that performance isn't just a feature—it's the foundation of the entire product.
+
+![Restaurant App Hero Mockup](/restaurant/cover.png)
+
+---
+
+## 🏛️ System Architecture
+
+The application is built with a clear separation of concerns, ensuring that the **Frontend** handles the user experience while the **Backend** manages data integrity and business logic. We moved away from a simple MVC structure to a **Module-Based Architecture**, where each feature (Auth, Product, Cart) is self-contained and communicates through strictly typed interfaces.
+
+### The Stack
+- **Core:** \`Next.js 14 (App Router)\`, \`TypeScript\`
+- **State & Logic:** \`React Hooks\`, \`Zod\` (Data Validation)
+- **Visuals:** \`Tailwind CSS\`, \`Framer Motion\` (Ui Animations)
+- **Database:** \`MongoDB\`, \`Mongoose\`
+- **Security:** \`Jose\` (JWT), \`Bcrypt\`, \`Rate Limiting\`
+
+\`\`\`text
+Restaurant-Food-Delivery/
+├── src/
+│   ├── modules/            # Core Business Logic
+│   │   └── [feature]/      # Service, Repository, Types
+│   ├── core/               # Global Utilities (Errors, Config)
+│   ├── components/         # UI Components
+│   │   ├── ui/             # Basic Elements (Input, Button)
+│   │   └── molecules/      # Complex Components
+│   └── app/                # Next.js App Router (Pages & API)
+\`\`\`
+
+---
+
+## ⚡ Engineering Deep-Dives
+
+### 1. Optimized Infinite Scroll
+Infinite scrolling can often lead to performance issues if not handled correctly. We implemented a **smart loading mechanism** using \`IntersectionObserver\` to ensure data loads smoothly as the user scrolls.
+
+![Interactive Menu Grid with Infinite Scroll](/restaurant/gallery-1.png)
+
+> [!TIP]
+> **Performance Boost:** We use **Mongoose Lean Logic** to return plain JavaScript objects instead of heavy database documents. This reduces the data processing overhead by **30-40%**, making the app much faster.
+
+#### The Data Flow
+\`\`\`mermaid
+sequenceDiagram
+    participant U as User
+    participant O as Scroll Observer
+    participant S as State Lock
+    participant A as API
+    participant D as Database
+
+    U->>O: Scrolls to bottom
+    O->>S: Check if already loading
+    alt is Loading
+        S-->>O: Do nothing
+    else is Ready
+        S->>S: Lock (Loading = True)
+        O->>A: Request more items
+        A->>D: Query Database (Lean Mode)
+        D-->>A: Return Data
+        A-->>U: Show new items
+        S->>S: Unlock (Loading = False)
+    end
+\`\`\`
+
+### 2. User Experience & Animations
+We believe the interface should feel alive. Instead of items simply appearing on the screen, they enter smoothly. Using **Framer Motion**, we added a **staggered animation effect** to lists. This makes the content feel more polished and high-quality, rather than just popping in abruptly.
+
+![Detailed Product View with Animation](/restaurant/gallery-3.png)
+
+- **Smart Search:** The search bar waits 500ms after you stop typing before sending a request. This **reduces server load by 80%**.
+- **Touch Gestures:** The image viewer supports natural swipe and zoom gestures, making the web app feel like a native mobile app.
+
+---
+
+## 🛡️ Backend Security Practices
+
+Security is built into the core, not added as an afterthought. Every request goes through a strict process to ensure safety.
+
+![Location Services and User Dashboard](/restaurant/gallery-2.png)
+
+> [!IMPORTANT]
+> **Always Validate:** No data reaches the core logic without first being checked by **Zod Schemas**. We treat every request as untrusted until it proves it is valid.
+
+### Key Security Measures
+1.  **Rate Limiting:** We limit how many requests can come from one IP address to prevent abuse.
+2.  **HttpOnly Cookies:** We store sensitive tokens in cookies that JavaScript cannot access, preventing common attacks (XSS).
+3.  **Role-Based Access:** User permissions are stored directly in their session token, so we don't need to check the database for every single action.
+
+---
+
+## ⚔️ Challenges & Solutions: Pagination Issues
+
+**The Challenge:** When combining Server-Side Rendering (loading on the server) with Client-Side Rendering (loading in the browser), we faced a "Pagination Sync" issue. This meant sometimes users would see the same item twice if new data was added while they were scrolling.
+
+**The Solution:** We switched to a **Cursor-Based Pagination** system.
+1.  **Timestamp Cursor:** Instead of saying "Page 2", the client asks for "items created after this timestamp".
+2.  **Consistent Feed:** This ensures that even if new items are added, the user's feed remains consistent and they never see duplicates.
+
+![Comprehensive Footer and Info Section](/restaurant/gallery-4.png)
+
+> [!CAUTION]
+> **Trade-off:** This method solves the duplicate issue but makes it harder to jump to a specific page number. We chose this trade-off because a smooth scrolling experience was more important for this app.
+`,
+    },
 }
 
 export function getAllProjects() {

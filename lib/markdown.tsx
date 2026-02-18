@@ -84,6 +84,8 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
 
         for (const line of lines) {
             const isCodeDelimiter = line.trim().startsWith('```');
+            const isHeader = line.trim().match(/^#{1,6}\s/);
+            const isHorizontalRule = line.trim().match(/^---$/);
 
             if (isCodeDelimiter) {
                 if (!insideCodeBlock && currentBlock.length > 0) {
@@ -103,6 +105,14 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
                     blocks.push(currentBlock.join('\n'));
                     currentBlock = [];
                 }
+            } else if (isHeader || isHorizontalRule) {
+                // Flush previous block
+                if (currentBlock.length > 0) {
+                    blocks.push(currentBlock.join('\n'));
+                    currentBlock = [];
+                }
+                // Push header/hr as its own block
+                blocks.push(line);
             } else {
                 currentBlock.push(line);
             }
