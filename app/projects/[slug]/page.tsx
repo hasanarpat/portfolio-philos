@@ -167,6 +167,62 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           </div>
         )}
 
+        {/* Workflows Section */}
+        {project.workflows && (
+          <div className="space-y-6 pt-10 border-t border-primary/10 mt-10">
+            <div className="font-mono text-xs text-primary uppercase tracking-widest">[OPERATIONAL.PROTOCOLS]</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {project.workflows.map((workflow, i) => (
+                <div key={i} className="border border-primary/10 bg-primary/5 p-6 space-y-4 hover:border-primary/30 transition-colors">
+                  <div className="flex items-center gap-2">
+                    <Layers className="w-4 h-4 text-primary/60" />
+                    <h3 className="font-serif text-lg text-foreground">{workflow.title}</h3>
+                  </div>
+                  <div className="space-y-3">
+                    {workflow.steps.map((step, j) => (
+                      <div key={j} className="flex gap-3">
+                        <span className="font-mono text-primary/40 text-[10px] mt-0.5">{(j + 1).toString().padStart(2, '0')}</span>
+                        <p className="text-foreground/70 text-sm leading-relaxed">{step}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Directory Map Section */}
+        {project.directoryMap && (
+          <div className="space-y-6 pt-10">
+            <div className="font-mono text-xs text-primary uppercase tracking-widest">[SYSTEM.ARCHITECTURE]</div>
+            <div className="border border-primary/20 bg-card/20 p-6 overflow-x-auto relative group">
+              <div className="absolute top-2 right-2 text-[10px] font-mono text-primary/30 uppercase tracking-widest group-hover:text-primary/60 transition-colors">tree -L 2</div>
+              <pre className="font-mono text-xs text-foreground/70 leading-relaxed whitespace-pre font-ligatures-none">
+                {project.directoryMap}
+              </pre>
+            </div>
+          </div>
+        )}
+
+        {/* UX Insights & Analysis */}
+        {project.uxInsights && (
+          <div className="space-y-6 pt-10">
+            <div className="font-mono text-xs text-primary uppercase tracking-widest">[USER.INTERACTION.ANALYSIS]</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {project.uxInsights.map((insight, i) => (
+                <div key={i} className="group border-l border-primary/10 pl-6 hover:border-primary/40 transition-colors">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Activity className="w-4 h-4 text-primary/60 group-hover:text-primary transition-colors" />
+                    <h3 className="font-serif text-lg text-foreground group-hover:text-primary transition-colors">{insight.title}</h3>
+                  </div>
+                  <p className="text-foreground/70 text-sm leading-relaxed">{insight.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {projectWithUrl.fullContent && (
           <div className="pt-20 border-t border-primary/10">
             <div className="max-w-3xl mx-auto">

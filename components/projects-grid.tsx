@@ -9,7 +9,7 @@ import { getAllProjects, Project } from "@/lib/projects"
 
 const projects = getAllProjects()
 
-const filterTypes = ["All", "Production System", "Open Source", "Experiment", "Educational", "Art Project"]
+const filterTypes = ["All", "Production System", "Open Source", "Browser Extension", "Experiment", "Educational", "Art Project"]
 
 const buildTerminalLines = (project: Project) => [
   `> ACCESSING ${project.title.toUpperCase().replace(/\s/g, "_")}...`,

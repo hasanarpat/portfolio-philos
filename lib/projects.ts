@@ -734,6 +734,199 @@ Security is built into the core, not added as an afterthought. Every request goe
 > **Trade-off:** This method solves the duplicate issue but makes it harder to jump to a specific page number. We chose this trade-off because a smooth scrolling experience was more important for this app.
 `,
     },
+    "duplicheck": {
+        id: 10,
+        slug: "duplicheck",
+        type: ["Experiment", "Browser Extension", "Open Source"],
+        title: "DupliCheck",
+        status: 'LIVE',
+        year: "2026",
+        summary:
+            "A deterministic browser extension that acts as a client-side sentinel, enforcing cart state consistency across e-commerce platforms.",
+        description:
+            "DupliCheck is a deterministic browser extension that acts as a client-side sentinel, enforcing cart state consistency across seven major e-commerce platforms through real-time heuristic analysis. It functions as a layered observer system, preventing accidental bulk orders.",
+        stack: ["JavaScript (ES6+)", "Manifest V3", "MutationObserver", "Shadow DOM"],
+        metrics: ["<16ms analysis cycle", "Zero-Dependency", "100% Client-Side"],
+        image: "/duplicheck/cover.png",
+        notes: [
+            "Zero-Dependency Architecture: Built on pure, vanilla ECMAScript.",
+            "Privacy: 100% Client-Side Processing (No external telemetry).",
+            "Resilience over Rigidity: Selectors designed with fallback cascading.",
+        ],
+        techAnalysis: {
+            title: "The Observer Paradox & Heuristic Polymorphism",
+            content:
+                "The primary engineering challenge in DOM-resident extensions is the Infinite Mutation Loop. DupliCheck solves this via a 'Self-Recognition' filter (`isOurOwnMutation`), creating a safe namespace. Instead of rigid selectors, it uses a Strategy Pattern to normalize diverse DOM structures into a unified internal model.",
+        },
+        directoryMap: `/
+├── manifest.json        # Extension Definition & Permissions
+├── content.js           # The "Eye" (Logic & DOM Manipulation)
+├── popup.js             # User Preferences Interface
+├── icons/               # Visual Identity Assets
+└── styles/              # Injected CSS Modules (Shadow DOM emulation)`,
+        workflows: [
+            {
+                title: "System Orchestration Flow",
+                steps: [
+                    "MutationObserver detects DOM changes (Debounced).",
+                    "Heuristic Engine executes analysis (<16ms).",
+                    "Maps DOM elements to 'Product Identity' composite key.",
+                    "Checks for duplicates (Self-Recognition filter applied).",
+                    "Injects Warning Label or Mounts Checkout Guard.",
+                ],
+            },
+        ],
+        uxInsights: [
+            {
+                title: "The Checkout Guardian",
+                description:
+                    "A prioritized overlay mechanism that captures focus (Focus Trap) to prevent accidental clicks. It 'pauses' the user's journey until they acknowledge the risk, respecting 'Snooze' preferences.",
+            },
+            {
+                title: "State Convergence",
+                description:
+                    "When a user accepts a 'Fix', the system dispatches synthetic InputEvent and ChangeEvent signals to trigger underlying React/Angular listeners, ensuring virtual DOM consistency.",
+            },
+        ],
+        fullContent: `
+# DupliCheck — Client-Side Cart Integrity Engine
+
+In the chaotic flux of modern e-commerce—where SPAs hydrate and re-render aggressively—user intent is often lost in translation, leading to accidental bulk orders and user frustration. **DupliCheck** is a deterministic browser extension that acts as a client-side sentinel, enforcing cart state consistency across seven major e-commerce platforms through real-time heuristic analysis.
+
+---
+
+## ⚡ Technology Stack & Metrics
+
+> [!NOTE]
+> **Zero-Dependency Architecture:** The system is built on pure, vanilla ECMAScript to ensure maximum performance and zero supply-chain attack surface.
+
+*   **Core:** JavaScript (ES6+), Manifest V3
+*   **Runtime APIs:** MutationObserver, chrome.storage, Shadow DOM (conceptual)
+*   **Performance:** <16ms analysis cycle (targeting 60fps frame budget)
+*   **Architecture:** Event-Driven Heuristic Engine
+*   **Privacy:** 100% Client-Side Processing (No external telemetry)
+
+---
+
+## 🏛️ Architectural Philosophy
+
+The extension functions not merely as a script, but as a layered observer system that sits between the user's perception and the raw DOM state.
+
+### 1. The Observer Paradox
+
+The primary engineering challenge in DOM-resident extensions is the **Infinite Mutation Loop**. modifying the DOM triggers the observer, which triggers the modifier, ad infinitum.
+
+DupliCheck solves this via a "Self-Recognition" filter (\`isOurOwnMutation\`), creating a safe namespace for its own artifacts within the hostile DOM environment.
+
+### 2. Heuristic Polymorphism
+
+Instead of rigid selectors, the system uses a **Strategy Pattern** to normalize the diverse DOM structures of different retailers (Trendyol, Amazon, Hepsiburada) into a unified internal model of "Product Identity."
+
+#### Identity Heuristic
+
+A product is not just a URL. It is a composite key of:
+
+1.  **Canonical Path:** \`url.pathname\` (stripping ephemeral query params)
+2.  **Merchant Identity:** \`sellerId\` (to distinguish marketplace vendors)
+3.  **Variant Signature:** sku/attributes (size/color)
+
+\`\`\`typescript
+// Conceptual signature of the identity resolution
+type ItemKey = string; // Format: "url_path|seller_id|variant_hash"
+function getItemKey(row: Element, config: SiteConfig): ItemKey {
+  const url = normalizeUrl(row);
+  const seller = extractSeller(row);
+  const variant = extractVariant(row);
+  return [url, seller, variant].join('|');
+}
+\`\`\`
+
+---
+
+## 🔄 System Orchestration Flow
+
+The following diagram illustrates the lifecycle of a cart validation event. Note the **Debounce Barrier**, which protects the main thread during rapid React/Vue hydration cycles.
+
+\`\`\`mermaid
+sequenceDiagram
+    participant U as User/DOM
+    participant M as MutationObserver
+    participant D as Debounce Barrier
+    participant E as Heuristic Engine
+    participant W as Warning Layer
+
+    loop [Hydration Noise]
+        U->>M: Adds Item to Cart (SPA Render)
+        M->>D: Fires Mutation Entries
+        D->>D: Filter (isOurOwnMutation?)
+        D->>E: Schedule Check (200ms)
+    end
+    
+    D->>E: Reset Timer
+    E->>E: Execute Analysis
+    E->>E: Map DOM to Standard Model
+    E->>E: Group by Identity Key
+    
+    alt [Duplicates Found > 0]
+        E->>W: Inject Warning Label
+        E->>W: Mount Checkout Guard (if applicable)
+        W-->>U: Visual Feedback (Bounce Animation)
+    else [No Duplicates]
+        E->>W: Teardown Artifacts (Clean State)
+    end
+\`\`\`
+
+---
+
+## 🧠 Engineering Deep-Dives
+
+### 1. Cross-Site Normalization Engine
+
+Supporting multiple non-standardized platforms required an abstraction layer. The \`SITE_CONFIG\` object acts as a driver definition, mapping abstract concepts (e.g., "Quantity Input") to concrete DOM implementations.
+
+> [!IMPORTANT]
+> **Resilience over Rigidity:** The selectors are designed with fallback cascading. If a specific \`data-testid\` is missing, the engine falls back to structural relationships (parent/child) to locate the target.
+
+### 2. State Convergence (The "Fix" Ritual)
+
+When a user accepts the "Fix" action, the system must forcefully converge the remote state to the desired local state.
+
+For platforms using input fields, we dispatch synthetic \`InputEvent\` and \`ChangeEvent\` signals to trigger the underlying React/Angular listeners, ensuring the framework's virtual DOM creates a transaction to update the server.
+
+\`\`\`javascript
+// Triggering React's onChange logic programmatically
+quantityEl.value = String(targetValue);
+quantityEl.dispatchEvent(new Event('input', { bubbles: true }));
+quantityEl.dispatchEvent(new Event('change', { bubbles: true }));
+\`\`\`
+
+### 3. The Checkout Guardian
+
+A modal intervention layer intercepts the checkout flow if consistency checks fail. This required a high-priority "overlay" mechanism that captures focus (Focus Trap) and prevents accidental clicks, effectively "pausing" the user's journey until they acknowledge the risk.
+
+> [!CAUTION]
+> **User Agency:** While we warn, we never block. The "Snooze" feature respects the user's decision to proceed with duplicates (e.g., buying gifts), persisting this preference via \`chrome.storage.local\` to prevent alert fatigue.
+
+---
+
+## 📂 Project Structure
+
+\`\`\`text
+/
+├── manifest.json        # Extension Definition & Permissions
+├── content.js           # The "Eye" (Logic & DOM Manipulation)
+├── popup.js             # User Preferences Interface
+├── icons/               # Visual Identity Assets
+└── styles/              # Injected CSS Modules (Shadow DOM emulation)
+\`\`\`
+
+---
+
+## Key Takeaway
+
+DupliCheck demonstrates that client-side state integrity does not require heavy frameworks. With precise DOM observation and intelligent heuristics, we can build robust, performance-neutral reliability tools that improve the economic efficiency of the user's digital experience.
+`,
+    },
 }
 
 export function getAllProjects() {
