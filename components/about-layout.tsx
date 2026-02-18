@@ -13,6 +13,11 @@ const techStack = [
   { name: "REST APIs", context: "API design, integration, documentation", category: "Backend" },
   { name: "Git", context: "Version control, branching strategies, CI/CD", category: "Tools" },
   { name: "Testing", context: "Jest, React Testing Library, Cypress E2E", category: "Quality" },
+  { name: "Linux", context: "Daily driver, bash scripting, server configs", category: "System" },
+  { name: "Game Dev", context: "Unity/Godot prototyping & mechanics", category: "Creative" },
+  { name: "Visual Effects", context: "GLSL shaders, particle systems", category: "Creative" },
+  { name: "IoT", context: "Arduino/ESP32, MQTT, hardware interfacing", category: "Hardware" },
+  { name: "Processing", context: "p5.js, generative art algorithms", category: "Creative" },
 ]
 
 const getSignalPattern = (seed: string, size = 12) => {
@@ -373,23 +378,23 @@ export function AboutLayout() {
                     {[
                       {
                         label: "Email",
-                        value: "alex@example.com",
-                        link: "mailto:alex@example.com",
+                        value: "hasanarpat99@gmail.com",
+                        link: "mailto:hasanarpat99@gmail.com",
                       },
                       {
                         label: "GitHub",
-                        value: "github.com/alexmorgan",
-                        link: "https://github.com/alexmorgan",
+                        value: "hasanarpat",
+                        link: "https://github.com/hasanarpat",
                       },
-                      {
-                        label: "Twitter",
-                        value: "@alexbuilds",
-                        link: "https://twitter.com/alexbuilds",
-                      },
+                      // {
+                      //   label: "Twitter",
+                      //   value: "@alexbuilds",
+                      //   link: "https://twitter.com/alexbuilds",
+                      // },
                       {
                         label: "LinkedIn",
-                        value: "linkedin.com/in/alexmorgan",
-                        link: "https://linkedin.com/in/alexmorgan",
+                        value: "hasan-arpat",
+                        link: "https://linkedin.com/in/hasan-arpat",
                       },
                     ].map((contact) => (
                       <a
@@ -419,7 +424,7 @@ export function AboutLayout() {
                       [Response.Time]
                     </div>
                     <p className="text-foreground/70 text-sm">
-                      I typically respond within 48 hours. If it's urgent, mention that in the subject line.
+                      I typically respond within 24 hours. If it's urgent, mention that in the subject line.
                     </p>
                   </div>
                 </div>
