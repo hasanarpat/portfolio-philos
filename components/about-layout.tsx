@@ -5,7 +5,7 @@ import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 
 // Tech Stack with context
 const techStack = [
-  { name: "React", context: "Primary frontend framework, 5+ years production", category: "Frontend" },
+  { name: "React", context: "Primary frontend framework, 2+ years production", category: "Frontend" },
   { name: "Next.js", context: "Full-stack apps, SSR/SSG, API routes", category: "Frontend" },
   { name: "TypeScript", context: "Type-safe development across all projects", category: "Language" },
   { name: "Redux / Saga", context: "Complex state management, async flows", category: "State" },
@@ -31,40 +31,42 @@ const getSignalPattern = (seed: string, size = 12) => {
 // Experience Timeline
 const experiences = [
   {
-    role: "Senior Frontend Engineer",
-    company: "TechCorp Inc.",
-    period: "2022 - Present",
-    description: "Leading frontend architecture for enterprise SaaS platform serving 100k+ users.",
+    role: "Fullstack Developer",
+    company: "35 Dijital",
+    period: "Oct 2025 – Present",
+    description: "Developing scalable fullstack applications and managing serverless infrastructure.",
     responsibilities: [
-      "Architected component library used across 5 product teams",
-      "Reduced bundle size by 40% through code splitting",
-      "Mentored team of 4 junior developers",
+      "Developing SSR-based frontend applications using Next.js and TypeScript",
+      "Building fullstack systems with Hono, Cloudflare Workers, Drizzle ORM, and SQLite",
+      "Designing scalable APIs and handling serverless deployment workflows",
     ],
-    scale: "100k+ users, 15 microservices",
+    scale: "Serverless / High-Performance",
   },
   {
-    role: "Frontend Developer",
-    company: "StartupXYZ",
-    period: "2020 - 2022",
-    description: "Built customer-facing dashboard and internal tools from ground up.",
+    role: "Frontend Engineer Intern",
+    company: "Jotform",
+    period: "Jul 2024 – Aug 2024",
+    description: "Built webhook-based features for the Approval product in a high-traffic SaaS environment.",
     responsibilities: [
-      "Implemented real-time data visualization with WebSockets",
-      "Developed CI/CD pipeline reducing deploy time by 60%",
-      "Collaborated with design team on design system",
+      "Built webhook-based features for the Approval product using React",
+      "Managed complex state with Redux-Saga",
+      "Worked in Linux-based RDS, using pnpm",
+      "Created reusable custom React hooks to improve performance",
     ],
-    scale: "50k+ MAU, 3-person team",
+    scale: "20M+ Users / Global SaaS",
   },
   {
-    role: "Junior Developer",
-    company: "Digital Agency",
-    period: "2018 - 2020",
-    description: "Full-stack development for various client projects.",
+    role: "Frontend Engineer Intern",
+    company: "Radity",
+    period: "Oct 2023 – Jan 2024",
+    description: "Remote internship focused on fintech reporting and document workflows.",
     responsibilities: [
-      "Delivered 20+ client projects on time",
-      "Introduced TypeScript to team workflow",
-      "Built reusable component templates",
+      "Developed report and invoice templates using Liquid Template Language",
+      "Integrated Socotra for invoice generation and document workflows",
+      "Wrote E2E tests with Playwright and Cypress",
+      "Monitored workflows and application insights via Azure",
     ],
-    scale: "20+ projects, diverse industries",
+    scale: "Fintech / Enterprise",
   },
 ]
 
@@ -100,11 +102,10 @@ export function AboutLayout() {
                   <button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`w-full text-left px-4 py-3 font-mono text-sm border transition-all duration-300 ${
-                      activeSection === section.id
-                        ? "border-primary bg-primary/20 text-primary text-glow"
-                        : "border-primary/20 text-foreground/60 hover:border-primary/50 hover:text-primary hover:bg-card/20"
-                    }`}
+                    className={`w-full text-left px-4 py-3 font-mono text-sm border transition-all duration-300 ${activeSection === section.id
+                      ? "border-primary bg-primary/20 text-primary text-glow"
+                      : "border-primary/20 text-foreground/60 hover:border-primary/50 hover:text-primary hover:bg-card/20"
+                      }`}
                   >
                     <span className="text-primary mr-2">▸</span>
                     {section.label}
@@ -132,21 +133,23 @@ export function AboutLayout() {
                   <h2 className="font-serif text-4xl text-foreground mb-6">Who I Am</h2>
 
                   <div className="prose prose-invert max-w-none space-y-4 text-foreground/80 leading-relaxed">
-                    <p>
-                      I'm a software developer focused on building systems that last. Not forever—nothing lasts
-                      forever—but longer than the typical 18-month rewrite cycle that plagues our industry.
-                    </p>
+                    <p>I’m a frontend-focused fullstack developer with 3 years of experience building production-grade web applications and 1 year of professional industry experience.</p>
 
-                    <p>
-                      My work spans distributed systems, observability tooling, and the occasional artistic experiment.
-                      I believe code is craft, that architecture is a form of thinking, and that the best abstractions
-                      reveal rather than hide complexity.
-                    </p>
+                    <p>I specialize in building scalable, maintainable systems rather than short-lived prototypes. My work spans modern frontend architectures, API-driven systems, and micro-SaaS style platforms.</p>
 
-                    <p>
-                      I'm drawn to terminals, protocols, and anything that exposes its internals. I prefer text over
-                      images, CLIs over GUIs, and systems that explain themselves over black boxes.
-                    </p>
+                    <p>I’ve worked with webhook-based integrations, insurance APIs, reporting systems, PDF generation pipelines, workflow builders, and service-oriented architectures. On the frontend side, I’ve built complex state-driven applications using TypeScript and Redux-Saga, focusing on predictable state management and long-term maintainability.</p>
+
+                    <p>I’m particularly interested in:</p>
+
+                    <ul className="list-disc list-inside">
+                      <li className="text-foreground/80 hover:text-primary text-glow-copper">API–panel–client architectures (similar to WordPress-style ecosystems)</li>
+                      <li className="text-foreground/80 hover:text-primary text-glow-copper">Micro-SaaS product structures</li>
+                      <li className="text-foreground/80 hover:text-primary text-glow-copper">Distributed service communication</li>
+                      <li className="text-foreground/80 hover:text-primary text-glow-copper">Workflow automation systems</li>
+                      <li className="text-foreground/80 hover:text-primary text-glow-copper">Performance-aware frontend systems</li>
+                    </ul>
+
+                    <p>I prefer understanding how systems actually work — from protocol level to UI behavior — and I design software with clarity, extensibility, and observability in mind.</p>
 
                     <p className="text-secondary text-glow-copper italic">
                       This portfolio is an experiment in cyberpunk aesthetics meets engineering portfolio. Because why
@@ -157,11 +160,11 @@ export function AboutLayout() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 pt-8 border-t border-primary/20">
                     <div>
                       <div className="font-mono text-xs text-primary mb-2 uppercase tracking-widest">Location</div>
-                      <div className="text-foreground">San Francisco, CA</div>
+                      <div className="text-foreground">İzmir - Türkiye (Open to remote / international roles)</div>
                     </div>
                     <div>
                       <div className="font-mono text-xs text-primary mb-2 uppercase tracking-widest">Years Coding</div>
-                      <div className="text-foreground">12+</div>
+                      <div className="text-foreground">5+</div>
                     </div>
                   </div>
                 </div>
@@ -229,67 +232,64 @@ export function AboutLayout() {
                         className="relative border border-primary/20 bg-card/10 p-5 hover:border-primary/50 hover:bg-card/20 transition-all duration-300 group cursor-pointer hover-lift"
                         style={{ animationDelay: `${index * 0.1}s` }}
                       >
-                          {/* Skill Header */}
-                          <div className="flex items-center justify-between mb-3">
-                            <div className="flex items-center gap-3">
-                              <span className="font-mono text-xs text-primary/50">[{skill.category}]</span>
-                              <span className="font-medium text-foreground group-hover:text-primary transition-colors">
-                                {skill.name}
-                              </span>
-                            </div>
+                        {/* Skill Header */}
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-3">
+                            <span className="font-mono text-xs text-primary/50">[{skill.category}]</span>
+                            <span className="font-medium text-foreground group-hover:text-primary transition-colors">
+                              {skill.name}
+                            </span>
                           </div>
+                        </div>
 
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">
-                                Signal Trace
-                              </span>
-                              <div className="grid grid-cols-6 gap-1">
-                                {getSignalPattern(skill.name).map((isActive, i) => (
-                                  <span
-                                    key={`${skill.name}-${i}`}
-                                    className={`h-2 w-2 rounded-sm border border-primary/20 transition-all duration-300 ${
-                                      isActive
-                                        ? "bg-primary/50 shadow-[0_0_6px_rgba(90,255,180,0.35)]"
-                                        : "bg-primary/10"
+                        <div className="space-y-3">
+                          <div className="flex items-center justify-between">
+                            <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">
+                              Signal Trace
+                            </span>
+                            <div className="grid grid-cols-6 gap-1">
+                              {getSignalPattern(skill.name).map((isActive, i) => (
+                                <span
+                                  key={`${skill.name}-${i}`}
+                                  className={`h-2 w-2 rounded-sm border border-primary/20 transition-all duration-300 ${isActive
+                                    ? "bg-primary/50 shadow-[0_0_6px_rgba(90,255,180,0.35)]"
+                                    : "bg-primary/10"
                                     } ${hoveredSkill === skill.name ? "opacity-100" : "opacity-60"}`}
-                                  />
-                                ))}
-                              </div>
+                                />
+                              ))}
                             </div>
+                          </div>
 
-                            <div className="relative border border-primary/20 bg-background/40 px-3 py-2">
-                              <div className="flex items-center justify-between text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
-                                <span>ASCII Scope</span>
-                                <span className={hoveredSkill === skill.name ? "text-primary/80" : ""}>Live</span>
-                              </div>
-                              <div className="mt-2 font-mono text-xs leading-4 text-primary/80">
-                                <div>/\__/\____/\___/\____/\__</div>
-                                <div className="text-foreground/50">--\_/--\__/--\_/--\__/--</div>
-                              </div>
-                              <div className="mt-2 flex items-center gap-2">
-                                {Array.from({ length: 10 }).map((_, i) => (
-                                  <span
-                                    key={`scope-${skill.name}-${i}`}
-                                    className={`block h-1.5 w-2 rounded-sm border border-primary/20 ${
-                                      i % 3 === 0 ? "bg-primary/60" : "bg-primary/15"
+                          <div className="relative border border-primary/20 bg-background/40 px-3 py-2">
+                            <div className="flex items-center justify-between text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
+                              <span>ASCII Scope</span>
+                              <span className={hoveredSkill === skill.name ? "text-primary/80" : ""}>Live</span>
+                            </div>
+                            <div className="mt-2 font-mono text-xs leading-4 text-primary/80">
+                              <div>/\__/\____/\___/\____/\__</div>
+                              <div className="text-foreground/50">--\_/--\__/--\_/--\__/--</div>
+                            </div>
+                            <div className="mt-2 flex items-center gap-2">
+                              {Array.from({ length: 10 }).map((_, i) => (
+                                <span
+                                  key={`scope-${skill.name}-${i}`}
+                                  className={`block h-1.5 w-2 rounded-sm border border-primary/20 ${i % 3 === 0 ? "bg-primary/60" : "bg-primary/15"
                                     } ${hoveredSkill === skill.name ? "opacity-100" : "opacity-70"}`}
-                                  />
-                                ))}
-                              </div>
-                              <div className="pointer-events-none absolute inset-x-5 top-[92px] h-[2px] bg-primary/40 blur-[2px] opacity-40" />
-                              <div className="pointer-events-none absolute inset-x-5 top-[96px] h-[1px] bg-primary/60 opacity-50" />
+                                />
+                              ))}
                             </div>
+                            <div className="pointer-events-none absolute inset-x-5 top-[92px] h-[2px] bg-primary/40 blur-[2px] opacity-40" />
+                            <div className="pointer-events-none absolute inset-x-5 top-[96px] h-[1px] bg-primary/60 opacity-50" />
                           </div>
+                        </div>
 
-                          {/* Context on Hover */}
-                          <div
-                            className={`mt-3 text-xs text-foreground/60 font-mono transition-all duration-300 overflow-hidden ${
-                              hoveredSkill === skill.name ? "max-h-20 opacity-100" : "max-h-0 opacity-0"
+                        {/* Context on Hover */}
+                        <div
+                          className={`mt-3 text-xs text-foreground/60 font-mono transition-all duration-300 overflow-hidden ${hoveredSkill === skill.name ? "max-h-20 opacity-100" : "max-h-0 opacity-0"
                             }`}
-                          >
-                            <span className="text-primary">▸</span> {skill.context}
-                          </div>
+                        >
+                          <span className="text-primary">▸</span> {skill.context}
+                        </div>
                       </div>
                     ))}
                   </div>
