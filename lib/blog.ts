@@ -47,7 +47,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
       Build accordingly.
     `,
-        date: "2026-03-15",
+        date: "2026-02-18",
         readTime: "12 min",
         category: "Architecture",
         featured: true,
@@ -84,7 +84,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
       The best interfaces don't try to anticipate every use case. They provide primitives that users can combine in unexpected ways. They trust the user.
     `,
-        date: "2026-02-28",
+        date: "2026-02-18",
         readTime: "8 min",
         category: "Design",
         featured: false,
@@ -155,7 +155,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
       Code is communication. If your abstraction obscures the intent, it has failed, no matter how "DRY" it is.
     `,
-        date: "2026-12-18",
+        date: "2026-02-18",
         readTime: "7 min",
         category: "Philosophy",
         featured: false,
@@ -190,7 +190,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
       In an era of "move fast and break things," there is a quiet dignity in protocols that were built to move slowly and break nothing. We should study them more often.
     `,
-        date: "2026-11-30",
+        date: "2026-02-18",
         readTime: "11 min",
         category: "Systems",
         featured: false,
