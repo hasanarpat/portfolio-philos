@@ -4,7 +4,6 @@ import { BlogPostClient } from "./BlogPostClient"
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
-  console.log('Debugging Metadata:', { slug })
   const post = BLOG_POSTS.find((p) => p.slug === slug)
 
   if (!post) {
@@ -31,16 +30,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
-// export function generateStaticParams() {
-//   return BLOG_POSTS.map((post) => ({
-//     slug: post.slug,
-//   }))
-// }
+export function generateStaticParams() {
+  return BLOG_POSTS.map((post) => ({
+    slug: post.slug,
+  }))
+}
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const post = BLOG_POSTS.find((p) => p.slug === slug)
-  console.log('Debugging Blog Post 2:', { slug, found: !!post, postTitle: post?.title })
   // JSON-LD Structured Data
   const jsonLd = post ? {
     "@context": "https://schema.org",

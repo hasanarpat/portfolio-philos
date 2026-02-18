@@ -77,7 +77,7 @@ export function BlogAsymmetricLayout() {
 
             {/* Featured Post */}
             {featuredPost && filter === "all" && (
-              <div className="border border-secondary/30 bg-card/30 p-6 box-glow-copper group cursor-pointer hover:border-secondary/60 transition-all duration-300">
+              <Link href={`/blog/${featuredPost.slug}`} className="block border border-secondary/30 bg-card/30 p-6 box-glow-copper group cursor-pointer hover:border-secondary/60 transition-all duration-300">
                 <div className="font-mono text-xs text-secondary mb-3 uppercase tracking-widest text-glow-copper">
                   [Featured]
                 </div>
@@ -89,7 +89,7 @@ export function BlogAsymmetricLayout() {
                   <span>{featuredPost.date}</span>
                   <span>{featuredPost.readTime}</span>
                 </div>
-              </div>
+              </Link>
             )}
 
             {/* Archive Stats */}
