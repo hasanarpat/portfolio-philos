@@ -74,19 +74,26 @@ export function Lightbox({
 
     // Mouse drag logic
     const handleMouseDown = (e: React.MouseEvent) => {
+        // Only allow dragging if clicking on the image itself
+        if (!imgRef.current?.contains(e.target as Node)) return;
+
         if (scale > 1) {
             setIsDragging(true)
             setStartPos({ x: e.clientX - position.x, y: e.clientY - position.y })
+            e.preventDefault(); // Prevent default drag behavior
         }
     }
 
     const handleMouseMove = (e: React.MouseEvent) => {
-        if (isDragging && scale > 1 && imgRef.current) {
+        if (!isDragging) return
+        e.preventDefault()
+
+        if (scale > 1 && imgRef.current) {
             // Calculate boundaries
             // The container is `transform: scale(...)`. The content unscaled size is what we need?
             // Let's rely on the scaled rendering size.
 
-            const rect = imgRef.current.getBoundingClientRect();
+            // const rect = imgRef.current.getBoundingClientRect(); // Not needed anymore
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
 
@@ -189,7 +196,6 @@ export function Lightbox({
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
-                onClick={(e) => e.stopPropagation()}
             >
                 <div
                     style={{
@@ -205,6 +211,7 @@ export function Lightbox({
                         alt={alt}
                         className="max-w-full max-h-[85vh] object-contain shadow-2xl ring-1 ring-primary/20 select-none"
                         draggable={false}
+                        onClick={(e) => e.stopPropagation()}
                     />
                 </div>
             </div>
