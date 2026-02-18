@@ -17,6 +17,9 @@ export default function BlogPostPage() {
   const postId = Number(params.id)
   const post = blogPosts.find((p) => p.id === postId)
 
+  const currentIndex = BLOG_POSTS.findIndex((p) => p.id === postId)
+  const nextPost = currentIndex >= 0 && currentIndex < BLOG_POSTS.length - 1 ? BLOG_POSTS[currentIndex + 1] : null
+
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100)
     return () => clearTimeout(timer)
@@ -175,16 +178,28 @@ export default function BlogPostPage() {
             }`}
           style={{ transitionDelay: "0.6s" }}
         >
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="font-mono text-xs text-muted-foreground">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="font-mono text-xs text-muted-foreground self-start md:self-center">
               Published: {post.date}
             </div>
-            <button
-              onClick={() => router.back()}
-              className="font-mono text-xs text-primary hover:text-glow transition-all px-4 py-2 border border-primary/30 hover:border-primary/60"
-            >
-              [← Back]
-            </button>
+
+            <div className="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
+              {nextPost && (
+                <Link
+                  href={`/blog/${nextPost.id}`}
+                  className="font-mono text-xs text-primary hover:text-glow transition-all px-4 py-2 border border-primary/30 hover:border-primary/60 text-center w-full sm:w-auto"
+                >
+                  [Next: {nextPost.title.length > 30 ? nextPost.title.substring(0, 30) + '...' : nextPost.title} →]
+                </Link>
+              )}
+
+              <button
+                onClick={() => router.back()}
+                className="font-mono text-xs text-muted-foreground hover:text-primary transition-all px-4 py-2 border border-primary/10 hover:border-primary/30 w-full sm:w-auto"
+              >
+                [← Back]
+              </button>
+            </div>
           </div>
         </footer>
       </article>
