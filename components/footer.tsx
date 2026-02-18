@@ -32,7 +32,7 @@ export function Footer() {
               GitHub
             </a>
             <a href="https://hasanarpat.github.io/" className="hover:text-primary transition-colors duration-300 text-sm link-underline">
-              Blog <img src="https://hasanarpat.github.io/assets/favicon/favicon-32x32.png" alt="ikon" width={16} height={16} className="inline-block" />
+              Blog <img src="/favicon-32x32.png" alt="ikon" width={16} height={16} className="inline-block" />
             </a>
             <a href="https://www.linkedin.com/in/hasan-arpat/" className="hover:text-primary transition-colors duration-300 text-sm link-underline">
               LinkedIn
