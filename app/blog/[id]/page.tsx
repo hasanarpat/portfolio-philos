@@ -4,99 +4,10 @@ import { useParams, useRouter } from "next/navigation"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
+import { BLOG_POSTS } from "@/lib/blog"
+
 // Sample blog posts data (same as in blog-asymmetric-layout)
-const blogPosts = [
-  {
-    id: 1,
-    title: "Designing for Decades: The Long-Term Architecture Philosophy",
-    excerpt:
-      "Most software is built to last months, maybe years. What if we designed systems with a 20-year horizon in mind?",
-    content: `
-      Most software is built to last months, maybe years. The typical enterprise application gets rewritten every 18 months—a cycle that burns resources and institutional knowledge alike.
-
-      But what if we designed systems with a 20-year horizon in mind?
-
-      ## The Cost of Short-Term Thinking
-
-      When we optimize for delivery speed over longevity, we accumulate what I call "architectural debt"—decisions that compound negatively over time. A quick fix becomes a pattern, that pattern becomes convention, and before long, we're maintaining systems that actively resist change.
-
-      ## Principles for Long-Term Design
-
-      **1. Prefer boring technology.** The best systems are built on foundations that have survived decades of production use. PostgreSQL over the hot new database. Plain HTTP over WebSockets unless you truly need bidirectional communication.
-
-      **2. Design for replacement.** Every component should be removable. If your architecture depends on a specific vendor or implementation, you've created a single point of fragility.
-
-      **3. Optimize for understanding.** Code is read far more often than it's written. Clarity beats cleverness, always.
-
-      ## The Compound Effect
-
-      Good architecture compounds. Each thoughtful decision makes future decisions easier. Each abstraction that reveals rather than hides complexity makes debugging faster.
-
-      Build accordingly.
-    `,
-    date: "2024-03-15",
-    readTime: "12 min",
-    category: "Architecture",
-  },
-  {
-    id: 2,
-    title: "The Terminal as a Design Pattern",
-    excerpt:
-      "Why command-line interfaces outlast most GUI applications, and what that teaches us about building lasting digital experiences.",
-    content: `
-      The terminal is one of the oldest user interfaces still in active use. While countless GUIs have come and gone, the command line persists—and thrives.
-
-      ## Why Terminals Endure
-
-      The terminal's longevity isn't nostalgia or stubbornness. It's a superior interface for many tasks, and understanding why can inform how we build other systems.
-
-      **Composability.** Unix pipes let you combine simple tools into complex workflows. Each command does one thing well. This modularity has proven remarkably adaptable.
-
-      **Text as Universal Interface.** Everything in the terminal is text—input, output, configuration. Text is inspectable, searchable, versionable, and portable.
-
-      **Low Bandwidth, High Information.** A terminal conveys more actionable information per pixel than most GUIs. No chrome, no decoration—just content.
-
-      ## Lessons for Modern Systems
-
-      Modern interfaces could learn from the terminal's durability. Design for composability. Prefer text-based configuration. Minimize the distance between user intent and system action.
-
-      The best interfaces don't try to anticipate every use case. They provide primitives that users can combine in unexpected ways.
-    `,
-    date: "2024-02-28",
-    readTime: "8 min",
-    category: "Design",
-  },
-  {
-    id: 3,
-    title: "Observability Beyond Metrics: Building Systems That Explain Themselves",
-    excerpt:
-      "Modern observability isn't just about dashboards and alerts. It's about creating systems with introspection capabilities built into their core.",
-    content: `
-      Observability has become a buzzword, often reduced to "the three pillars"—logs, metrics, and traces. But true observability goes deeper.
-
-      ## The Problem with Pillar-Based Thinking
-
-      Logs, metrics, and traces are outputs, not capabilities. They tell you what happened, but not why. A system that generates terabytes of logs isn't observable—it's noisy.
-
-      ## Systems That Explain Themselves
-
-      The goal isn't more data. It's understanding. An observable system can answer questions you didn't know to ask when you built it.
-
-      **Structured Events over Logs.** Instead of printf debugging, emit structured events with rich context. Every event should be queryable, filterable, correlatable.
-
-      **Causality over Correlation.** Metrics show correlation; traces show causality. Invest in distributed tracing that captures the full request lifecycle.
-
-      **Runtime Introspection.** The best debugging happens in production. Build systems that can describe their own state—current connections, active transactions, resource utilization—without deploying new code.
-
-      ## Building Introspection In
-
-      Observability isn't something you add after the fact. It's an architectural decision that shapes how you build from day one.
-    `,
-    date: "2024-02-10",
-    readTime: "15 min",
-    category: "Systems",
-  },
-]
+const blogPosts = BLOG_POSTS
 
 export default function BlogPostPage() {
   const params = useParams()
@@ -131,9 +42,8 @@ export default function BlogPostPage() {
         {/* Back Link */}
         <Link
           href="/blog"
-          className={`inline-flex items-center gap-2 font-mono text-sm text-muted-foreground hover:text-primary mb-8 transition-all duration-500 ${
-            isLoaded ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
-          }`}
+          className={`inline-flex items-center gap-2 font-mono text-sm text-muted-foreground hover:text-primary mb-8 transition-all duration-500 ${isLoaded ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
+            }`}
         >
           <span>←</span>
           <span>[Back to Blog]</span>
@@ -141,9 +51,8 @@ export default function BlogPostPage() {
 
         {/* Header */}
         <header
-          className={`mb-12 transition-all duration-700 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className={`mb-12 transition-all duration-700 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
         >
           <div className="flex items-center gap-4 mb-4 font-mono text-xs">
             <span className="text-primary">[{post.category}]</span>
@@ -160,20 +69,21 @@ export default function BlogPostPage() {
 
         {/* Divider */}
         <div
-          className={`h-px bg-primary/30 mb-12 transition-all duration-1000 origin-left ${
-            isLoaded ? "scale-x-100" : "scale-x-0"
-          }`}
+          className={`h-px bg-primary/30 mb-12 transition-all duration-1000 origin-left ${isLoaded ? "scale-x-100" : "scale-x-0"
+            }`}
           style={{ transitionDelay: "0.3s" }}
         />
 
         {/* Content */}
         <div
-          className={`prose prose-invert prose-lg max-w-none transition-all duration-700 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className={`prose prose-invert prose-lg max-w-none transition-all duration-700 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
           style={{ transitionDelay: "0.4s" }}
         >
-          {post.content.split("\n\n").map((paragraph, index) => {
+          {post.content.split("\n\n").map((block, index) => {
+            const paragraph = block.trim()
+            if (!paragraph) return null
+
             if (paragraph.startsWith("## ")) {
               return (
                 <h2 key={index} className="font-serif text-2xl md:text-3xl text-foreground mt-12 mb-6">
@@ -181,29 +91,88 @@ export default function BlogPostPage() {
                 </h2>
               )
             }
+
+            // Image support: ![alt](src) or ![alt](src) followed by caption
+            const imageMatch = paragraph.match(/^!\[(.*?)\]\((.*?)\)(\n[\s\S]*)?$/)
+            if (imageMatch) {
+              const [_, alt, src, captionWithNewline] = imageMatch
+              const caption = captionWithNewline ? captionWithNewline.trim().replace(/^\*/, "").replace(/\*$/, "") : ""
+              return (
+                <div key={index} className="my-8">
+                  <div className="relative rounded-lg overflow-hidden border border-primary/20 bg-black/50">
+                    <img src={src} alt={alt} className="w-full h-auto object-cover" />
+                  </div>
+                  {caption && (
+                    <p className="mt-3 text-sm text-muted-foreground text-center font-mono italic">
+                      {caption}
+                    </p>
+                  )}
+                </div>
+              )
+            }
+
             if (paragraph.startsWith("**") && paragraph.endsWith("**")) {
               return (
-                <p key={index} className="text-primary font-medium">
+                <p key={index} className="text-primary font-medium mb-6">
                   {paragraph.replace(/\*\*/g, "")}
                 </p>
               )
             }
-            if (paragraph.trim()) {
+
+            if (paragraph.startsWith("> ")) {
               return (
-                <p key={index} className="text-foreground/80 leading-relaxed mb-6">
-                  {paragraph}
-                </p>
+                <blockquote key={index} className="border-l-2 border-primary pl-6 py-2 my-8 italic text-foreground/80 bg-primary/5">
+                  {paragraph.replace(/^> /, "")}
+                </blockquote>
               )
             }
-            return null
+
+            return (
+              <div key={index} className="text-foreground/80 leading-relaxed mb-6 whitespace-pre-line">
+                {paragraph.split("\n").map((line, i) => {
+                  // Basic bold handling
+                  const parts = line.split(/(\*\*.*?\*\*)/g)
+                  return (
+                    <span key={i} className="block mb-1">
+                      {parts.map((part, j) => {
+                        if (part.startsWith("**") && part.endsWith("**")) {
+                          return <strong key={j} className="text-primary font-normal">{part.slice(2, -2)}</strong>
+                        }
+                        // Handle links [text](url) - basic implementation
+                        const linkMatch = part.match(/\[(.*?)\]\((.*?)\)/)
+                        if (linkMatch) {
+                          // This is very naive, supports only one link per segment. Sufficient for now.
+                          const [full, text, url] = linkMatch
+                          const [pre, post] = part.split(full)
+                          return (
+                            <span key={j}>
+                              {pre}
+                              <a
+                                href={url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-primary underline decoration-primary/30 hover:decoration-primary"
+                              >
+                                {text}
+                              </a>
+                              {post}
+                            </span>
+                          )
+                        }
+                        return part
+                      })}
+                    </span>
+                  )
+                })}
+              </div>
+            )
           })}
         </div>
 
         {/* Footer */}
         <footer
-          className={`mt-16 pt-8 border-t border-primary/20 transition-all duration-700 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className={`mt-16 pt-8 border-t border-primary/20 transition-all duration-700 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
           style={{ transitionDelay: "0.6s" }}
         >
           <div className="flex flex-wrap items-center justify-between gap-4">
