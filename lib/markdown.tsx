@@ -1,6 +1,7 @@
 import React from "react"
 import Image from "next/image"
 import { ZoomableImage } from "@/components/ui/zoomable-image"
+import { MermaidDiagram } from "@/components/ui/mermaid-diagram"
 
 export const renderInlineMarkdown = (text: string): React.ReactNode[] => {
     // 1. Handle Bold: **text**
@@ -199,7 +200,13 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
 
                 // Code blocks
                 if (trimmed.startsWith("```")) {
+                    const isMermaid = trimmed.startsWith("```mermaid");
                     const codeContent = trimmed.replace(/^```\w*\n/, "").replace(/```$/, "");
+
+                    if (isMermaid) {
+                        return <MermaidDiagram key={i} chart={codeContent} />;
+                    }
+
                     return (
                         <div key={i} className="my-8 border border-primary/20 bg-black/40 p-6 overflow-x-auto">
                             <pre className="font-mono text-xs text-primary/80 leading-relaxed whitespace-pre">
