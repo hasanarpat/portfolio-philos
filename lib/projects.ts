@@ -743,6 +743,8 @@ Security is built into the core, not added as an afterthought. Every request goe
         year: "2026",
         summary:
             "A deterministic browser extension that acts as a client-side sentinel, enforcing cart state consistency across e-commerce platforms.",
+        url: "https://addons.mozilla.org/en-US/firefox/addon/cart-duplicate-checker/",
+        github: "https://github.com/hasanarpat/duplicate-cart-item-chrome-extension",
         description:
             "DupliCheck is a deterministic browser extension that acts as a client-side sentinel, enforcing cart state consistency across seven major e-commerce platforms through real-time heuristic analysis. It functions as a layered observer system, preventing accidental bulk orders.",
         stack: ["JavaScript (ES6+)", "Manifest V3", "MutationObserver", "Shadow DOM"],
