@@ -1,6 +1,7 @@
 export interface BlogPost {
     id: number
     title: string
+    slug: string
     excerpt: string
     content: string
     date: string
@@ -13,6 +14,7 @@ export const BLOG_POSTS: BlogPost[] = [
     {
         id: 1,
         title: "Designing for Decades: The Long-Term Architecture Philosophy",
+        slug: "designing-for-decades-long-term-architecture",
         excerpt:
             "Most software is built to last months, maybe years. What if we designed systems with a 20-year horizon in mind? Exploring trade-offs, dependencies, and resilience patterns.",
         content: `
@@ -53,6 +55,7 @@ export const BLOG_POSTS: BlogPost[] = [
     {
         id: 2,
         title: "The Terminal as a Design Pattern",
+        slug: "the-terminal-as-a-design-pattern",
         excerpt:
             "Why command-line interfaces outlast most GUI applications, and what that teaches us about building lasting digital experiences.",
         content: `
@@ -89,6 +92,7 @@ export const BLOG_POSTS: BlogPost[] = [
     {
         id: 3,
         title: "Observability Beyond Metrics: Building Systems That Explain Themselves",
+        slug: "observability-beyond-metrics",
         excerpt:
             "Modern observability isn't just about dashboards and alerts. It's about creating systems with introspection capabilities built into their core.",
         content: `
@@ -123,6 +127,7 @@ export const BLOG_POSTS: BlogPost[] = [
     {
         id: 5,
         title: "Against Premature Abstraction",
+        slug: "against-premature-abstraction",
         excerpt:
             "Code should reveal intention, not hide it. On the balance between DRY principles and clarity in system design.",
         content: `
@@ -158,6 +163,7 @@ export const BLOG_POSTS: BlogPost[] = [
     {
         id: 6,
         title: "Network Protocols I've Known and Loved",
+        slug: "network-protocols-ive-known-and-loved",
         excerpt:
             "A nostalgic tour through SMTP, IRC, and the beauty of simple, text-based protocols that still power the internet.",
         content: `
@@ -192,6 +198,7 @@ export const BLOG_POSTS: BlogPost[] = [
     {
         id: 7,
         title: "Networking for Web Developers",
+        slug: "networking-for-web-developers",
         excerpt: "All you need to know about networking and internet as a web developer.",
         content: `
       In this century everything gets more and more complex. The internet is in the first place of course. So especially as web developers, we need to know the basics of the internet and its protocols to work with it effectively.

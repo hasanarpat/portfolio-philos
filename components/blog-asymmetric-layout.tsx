@@ -117,7 +117,7 @@ export function BlogAsymmetricLayout() {
             {filteredPosts.map((post, index) => (
               <Link
                 key={post.id}
-                href={`/blog/${post.id}`}
+                href={`/blog/${post.slug}`}
                 className={`scatter-item block border border-primary/20 bg-card/20 p-6 hover:border-primary/50 hover:bg-card/30 transition-all duration-300 group hover-lift ${isVisible ? "visible" : ""
                   }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
