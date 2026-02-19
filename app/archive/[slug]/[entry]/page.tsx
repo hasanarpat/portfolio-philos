@@ -67,6 +67,38 @@ const archiveEntries = {
       summary: "Textures collected across late-night sessions.",
       notes: ["High contrast grain", "Digitized film overlays", "Randomized frames"],
     },
+    {
+      slug: "substrate",
+      title: "Substrate",
+      detail: "Texture catalog",
+      src: "/abstract-dark-digital-art-glitch-aesthetic.png",
+      summary: "A collection of organic digital surfaces and noise patterns.",
+      notes: ["Macro focus", "Surface tension", "Digital grain"],
+    },
+    {
+      slug: "neon-lattice",
+      title: "Neon Lattice",
+      detail: "Structural pattern",
+      src: "/neural-network-visualization-dark-cyberpunk.png",
+      summary: "Geometric intersections captured in low-light environments.",
+      notes: ["Long exposure", "Light trails", "Geometric alignment"],
+    },
+    {
+      slug: "echo-grid",
+      title: "Echo Grid",
+      detail: "Interface fragments",
+      src: "/immutable-database-architecture-dark.png",
+      summary: "Fragmented perspectives on urban infrastructure.",
+      notes: ["Perspective shift", "Grid-based composition", "Shadow play"],
+    },
+    {
+      slug: "cold-cache",
+      title: "Cold Cache",
+      detail: "Midnight reflections",
+      src: "/distributed-cache-system-dark-technical-diagram.png",
+      summary: "The stillness of data centers and server racks at night.",
+      notes: ["Cool tones", "Static composition", "Industrial textures"],
+    },
   ],
   blog: [
     {
