@@ -6,12 +6,12 @@ import { useState, useEffect } from "react"
 
 const navItems = [
   { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
   { href: "/blog", label: "Blog" },
   { href: "/gallery", label: "Gallery" },
   { href: "/thinkings", label: "Thinkings" },
   { href: "/archive", label: "Archive" },
-  { href: "/about", label: "About" },
 ]
 
 export function Navigation() {
