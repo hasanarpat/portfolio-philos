@@ -234,13 +234,13 @@ function PhotoArchive() {
         <span className="text-primary/70">FRAME SYNC</span>
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-      {photoSets.map((photo, index) => (
-        <Link
-          key={photo.title}
-          href={`/archive/photo/${photo.slug}`}
-          className="group relative border border-primary/20 bg-card/10 overflow-hidden hover:border-primary/50 transition-all duration-300"
-          style={{ gridColumn: index === 0 ? "span 2" : undefined }}
-        >
+        {photoSets.map((photo, index) => (
+          <Link
+            key={photo.title}
+            href={`/archive/photo/${photo.slug}`}
+            className="group relative border border-primary/20 bg-card/10 overflow-hidden hover:border-primary/50 transition-all duration-300"
+            style={{ gridColumn: index === 0 ? "span 2" : undefined }}
+          >
             <div className={`relative ${index === 0 ? "aspect-video" : "aspect-3/4"}`}>
               <Image
                 src={photo.src}
@@ -256,7 +256,7 @@ function PhotoArchive() {
               <div className="text-sm text-foreground">{photo.title}</div>
             </div>
             <div className="pointer-events-none absolute inset-y-0 right-2 w-px bg-primary/30 opacity-40 group-hover:opacity-80 transition-opacity duration-500" />
-        </Link>
+          </Link>
         ))}
       </div>
     </div>
@@ -270,7 +270,7 @@ function BlogArchive() {
         <Link
           key={entry.title}
           href={`/archive/blog/${entry.slug}`}
-          className="group border border-primary/20 bg-card/10 p-6 hover:border-primary/40 transition-all duration-300"
+          className="block group border border-primary/20 bg-card/10 p-6 hover:border-primary/40 transition-all duration-300"
         >
           <div className="flex items-center justify-between flex-wrap gap-3">
             <div>
