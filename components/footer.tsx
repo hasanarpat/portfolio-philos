@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer ref={ref} className="py-24 px-6 md:px-12 border-t border-muted/10">
       <div
-        className={`max-w-6xl flex flex-col md:flex-row justify-between items-start gap-8 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        className={`max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-8 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
       >
         <div className="space-y-1">
