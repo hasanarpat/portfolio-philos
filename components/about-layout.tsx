@@ -98,8 +98,11 @@ export function AboutLayout() {
               {/* Header */}
               <div className="border border-primary/30 bg-card/20 p-6 box-glow">
                 <div className="font-mono text-xs text-primary mb-2 uppercase tracking-widest">[USER.INFO]</div>
-                <h1 className="font-serif text-3xl text-foreground">About</h1>
+                <h1 className="font-serif text-3xl text-foreground">
+                  {sections.find((s) => s.id === activeSection)?.label}
+                </h1>
               </div>
+
 
               {/* Navigation */}
               <nav className="space-y-2">
