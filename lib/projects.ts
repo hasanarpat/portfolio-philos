@@ -1053,6 +1053,164 @@ The version control history (Git History) reveals the evolution of a modern soft
 This project not only digitized a restaurant menu but also demonstrated how modern web technologies (React, Tailwind) can be harmonized with a retro design language. **Code quality, type safety, and modular architecture** form a solid foundation for the project's future scalability (new branches, online ordering system, etc.).
         `,
     },
+    "edge-native-cms-radio": {
+        id: 12,
+        slug: "edge-native-cms-radio",
+        type: ["Production System", "Web Application", "CMS"],
+        title: "Edge-Native CMS & Radio Architecture",
+        status: "LIVE",
+        year: "2024-2025",
+        summary:
+            "A high-performance, multi-tenant ecosystem architected at 35Dijital. Powers a network of live radio stations and corporate sites with an edge-native stack.",
+        description:
+            "Architected and developed during my tenure at **35Dijital**, this project represents a paradigm shift from monolithic CMSs to a distributed, edge-native ecosystem. It unifies three separate repositories (Admin, Frontend, API) into a cohesive platform that powers live radio streaming and dynamic corporate content with global sub-second latency.",
+        stack: ["Next.js (OpenNext)", "Hono (Workers)", "Drizzle ORM", "Cloudflare D1", "R2 Storage", "TypeScript"],
+        metrics: ["99% Server-Side Rendered", "Zero-Cold Start API", "Multi-Repo Architecture"],
+        image: "/edge-cms/muhendislik.png",
+        url: "https://radyobakis.com",
+        // github: "Private (Enterprise)", 
+        notes: [
+            "Architected at 35Dijital as a flagship micro-SaaS solution.",
+            "Decoupled Multi-Repo strategy for independent scalability.",
+            "Custom 'No-Code' Builder competing with enterprise solutions.",
+            "Relational modeling via D1 and junction tables for stability.",
+            "Signed URL mechanism for secure R2 file delivery.",
+            "Custom no-code page builder with 58+ reusable blocks.",
+        ],
+        techAnalysis: {
+            title: "Distributed Edge Architecture",
+            content:
+                "To meet the strict performance requirements of live radio broadcasting, I designed a distributed system where the API, Frontend, and Admin Panel live in separate repositories but communicate via a unified Edge-Native protocol. This ensures that a heavy build process in the Admin Panel never affects the listener experience on the Frontend.",
+        },
+        directoryMap: `35dijital-ecosystem/
+├── cms-admin-panel/    # [Repo 1] The Command Center
+│   ├── src/ui/         # React-based No-Code Builder
+│   └── src/auth/       # Role-Based Access Guards
+├── public-frontend/    # [Repo 2] The Listener Experience
+│   ├── app/            # Next.js 14 SSR/SSG
+│   └── lib/player/     # HLS/Shoutcast Stream Integration
+└── core-api-worker/    # [Repo 3] The Brain (Edge Native)
+    ├── src/router/     # Hono Router (Sub-millisecond Latency)
+    └── drizzle/        # D1 Database Schemas`,
+        workflows: [
+            {
+                title: "Distributed Build Pipeline",
+                steps: [
+                    "Admin Repo pushes trigger separate Worker builds.",
+                    "Frontend changes deploy to Vercel/Cloudflare Pages.",
+                    "API updates propagate globally in <5 seconds.",
+                    "Shared Type Library matches interfaces across repos.",
+                ],
+            },
+            {
+                title: "Unified Auth Across Domains",
+                steps: [
+                    "User logs into Admin Panel (auth.35dijital...)",
+                    "JWT issued with HTTP-Only Cookie.",
+                    "Workers API verifies signature at the Edge.",
+                    "Frontend renders personalized content via SSR.",
+                ],
+            },
+        ],
+        uxInsights: [
+            {
+                title: "Enterprise-Grade UX",
+                description:
+                    "Designed for non-technical editors at 35Dijital's client (Radyo Bakış), the interface mimics desktop publishing software, allowing complex layout composition without engineering intervention.",
+            },
+            {
+                title: "Seamless Audio Handoff",
+                description:
+                    "The radio player state is persisted globally. As users navigate between server-rendered pages, the audio stream remains uninterrupted - a complex feat in a multi-page architecture.",
+            },
+        ],
+        fullContent: `
+# Edge-Native CMS & Radio Platform Architecture
+### Developed at **35Dijital** · Radyobakış · Radyobabaurgaz · Onsöz Mühendislik
+
+## 1. Executive Summary
+**Designed and built during my time at [35Dijital](https://35dijital.com),** this project is an enterprise-grade ecosystem that solves the "Monolith Problem" in agency workflows. Instead of maintaining dozens of WordPress instances, we architected a single, powerful **Multi-Tenant SaaS** that serves multiple high-traffic radio stations and corporate clients from a unified Edge-Native backend.
+
+This system is not just a website; it is a **distributed operating system for content**, consisting of three synchronized repositories working in harmony to deliver content with zero latency.
+
+### Live Enterprise Deployments
+*   [Radyo Bakış](https://radyobakis.com) — *Live 24/7 Radio Station*
+*   [Radyo Baba Burgaz](https://radyobababurgaz.com) — *Regional Broadcaster*
+*   [Onsöz Mühendislik](https://onsozmuhendislik.com.tr) — *Corporate Portfolio*
+
+## 2. The 35Dijital Micro-SaaS Architecture
+We moved away from the "One Big Repo" pattern to a **Decoupled Multi-Repository Strategy**. This allows the Frontend to scale independently of the Backend, and ensures that the Admin Panel remains secure and isolated.
+
+*   **Repo 1: The Core Brain (API)** — A Hono-based Worker scaling on Cloudflare.
+*   **Repo 2: The Listener Experience (Frontend)** — Next.js utilizing OpenNext for Edge SSR.
+*   **Repo 3: The Command Center (Admin)** — A specialized React application for content composition.
+
+## 3. High-Level Distributed Flow
+
+\`\`\`mermaid
+flowchart TD
+    subgraph "Repo 1: Admin Panel"
+        Admin[Dashboard & Builder]
+    end
+
+    subgraph "Repo 2: Public Frontend"
+        SSR[Next.js Server]
+        Player[Audio Engine]
+    end
+
+    subgraph "Repo 3: Core API (Cloudflare Workers)"
+        Router[Hono Router]
+        Auth[RBAC Guard]
+    end
+
+    subgraph "Global Edge Data"
+        D1[(D1 Database)]
+        R2[(R2 Storage)]
+    end
+
+    Admin -->|JSON Layouts| Router
+    SSR -->|Fetch Content| Router
+    Router --> Auth
+    Router --> D1 & R2
+\`\`\`
+
+## 4. Key Engineering Feats
+
+### 4.1. The "No-Code" Engine
+At 35Dijital, our goal was to empower copywriters. I built a custom **Drag-and-Drop Page Builder** that rivals Elementor or Gutenberg, but outputs pure, clean JSON.
+*   **Performance:** Unlike WordPress plugins that bloat the HTML, our builder hydrates into lightweight React components only when needed.
+*   **Flexibility:** 58+ custom blocks developed specifically for the needs of radio stations and news agencies.
+
+![Onsöz Mühendislik Projects Page - Built with Block Components](/edge-cms/projects.png)
+
+### 4.2. Edge-Native Relational Data
+Managing complex relationships (Authors <-> Articles <-> Categories) in a distributed NoSQL environment is painful.
+*   **Innovation:** We utilized **Cloudflare D1** (SQLite at the Edge) combined with **Drizzle ORM**. This gave us the strict relational integrity of SQL with the global distribution of a CDN.
+
+### 4.3. The Live Broadcasting Engine
+For radio stations, "dead air" is the enemy. We built a robust audio engine that handles network fluctuations gracefully.
+*   **HLS & Shoutcast Support:** The player automatically detects stream formats and switches strategies for optimal buffering.
+*   **Metadata Extraction:** A server-side worker parses the Shoutcast/dnas metadata stream to display "Now Playing" information in real-time, without exposing the client IP to the streaming server.
+
+![Radyo Bakış Live Player Interface](/edge-cms/cover.png)
+
+### 4.4. Uninterrupted User Experience (SPA Navigation)
+A key requirement was **Persistent Audio**. Listeners browse news, read articles, and even navigate between different sites in the network (if configured) without the music stopping.
+*   **State Persistence:** The audio player lives in a React Context provider above the main router outlet, ensuring it never unmounts during page transitions.
+*   **Mobile-First Design:** The player controls are optimized for thumb reach, with a specialized mobile layout for listeners on the go.
+
+![Radyo Baba Burgaz Mobile Experience](/edge-cms/burgaz.png)
+
+## 5. Professional Impact
+This platform transformed 35Dijital's delivery capability.
+*   **Deployment Time:** Reduced from days (VPS setup) to minutes (Wrangler deploy).
+*   **Maintenance:** Unified codebase meant fixing a bug once fixed it for all clients.
+*   **Performance:** Achieved consistent 100/100 Lighthouse scores due to Edge-SSR.
+
+## 6. Conclusion
+This project is a testament to **System Architecture** at scale. It demonstrates how splitting concerns into focused repositories—while sharing a unified typed contract—can create a product that is both developer-friendly and enterprise-ready.
+        `,
+    },
 }
 
 export function getAllProjects() {

@@ -6,6 +6,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { getAllProjects, Project } from "@/lib/projects"
+import { renderInlineMarkdown } from "@/lib/markdown"
 
 const projects = getAllProjects()
 
@@ -215,7 +216,7 @@ export function ProjectsGrid() {
                   {project.title}
                 </h2>
 
-                <p className="text-foreground/70 leading-relaxed mb-6">{project.description}</p>
+                <p className="text-foreground/70 leading-relaxed mb-6">{renderInlineMarkdown(project.description)}</p>
 
                 {/* Stack */}
                 <div className="flex flex-wrap gap-2 mb-6">
