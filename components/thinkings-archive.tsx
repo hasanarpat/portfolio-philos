@@ -44,7 +44,7 @@ const thinkings = [
     date: '2024.03.08',
     time: '16:20',
     content:
-      "Discovered a 7-year-old bug today. It's been silently corrupting data, but so rarely that nobody noticed. Makes you wonder what else is lurking.",
+      "Discovered a 3-year-old bug today. It's been silently corrupting data, but so rarely that nobody noticed. Makes you wonder what else is lurking.",
     tags: ['bugs', 'legacy'],
     mood: 'uneasy',
   },
@@ -146,11 +146,10 @@ export function ThinkingsArchive() {
           <div className='flex flex-wrap gap-2'>
             <button
               onClick={() => setSelectedTag(null)}
-              className={`px-3 py-1 font-mono text-xs border transition-all duration-300 ${
-                selectedTag === null
+              className={`px-3 py-1 font-mono text-xs border transition-all duration-300 ${selectedTag === null
                   ? 'border-primary bg-primary/20 text-primary text-glow'
                   : 'border-primary/20 text-foreground/60 hover:border-primary/50 hover:text-primary'
-              }`}
+                }`}
             >
               all ({thinkings.length})
             </button>
@@ -158,11 +157,10 @@ export function ThinkingsArchive() {
               <button
                 key={tag}
                 onClick={() => setSelectedTag(tag)}
-                className={`px-3 py-1 font-mono text-xs border transition-all duration-300 ${
-                  selectedTag === tag
+                className={`px-3 py-1 font-mono text-xs border transition-all duration-300 ${selectedTag === tag
                     ? 'border-primary bg-primary/20 text-primary text-glow'
                     : 'border-primary/20 text-foreground/60 hover:border-primary/50 hover:text-primary'
-                }`}
+                  }`}
               >
                 #{tag} ({thinkings.filter((t) => t.tags.includes(tag)).length})
               </button>
@@ -216,9 +214,8 @@ export function ThinkingsArchive() {
 
               {/* Hover indicator line */}
               <div
-                className={`h-[1px] mt-4 transition-all duration-500 ${
-                  hoveredId === thinking.id ? 'bg-primary/30' : 'bg-transparent'
-                }`}
+                className={`h-[1px] mt-4 transition-all duration-500 ${hoveredId === thinking.id ? 'bg-primary/30' : 'bg-transparent'
+                  }`}
               />
             </div>
           ))}

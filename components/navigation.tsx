@@ -6,11 +6,11 @@ import { useState, useEffect } from "react"
 
 const navItems = [
   { href: "/", label: "Home" },
+  { href: "/projects", label: "Projects" },
   { href: "/blog", label: "Blog" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/archive", label: "Archive" },
-  { href: "/projects", label: "Projects" },
   { href: "/thinkings", label: "Thinkings" },
+  { href: "/archive", label: "Archive" },
   { href: "/about", label: "About" },
 ]
 
@@ -46,8 +46,8 @@ export function Navigation() {
       </div>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled || menuOpen
-            ? "bg-background/80 backdrop-blur-md border-b border-primary/20 box-glow"
-            : "bg-transparent"
+          ? "bg-background/80 backdrop-blur-md border-b border-primary/20 box-glow"
+          : "bg-transparent"
           }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -157,8 +157,8 @@ export function Navigation() {
                       href={item.href}
                       onClick={() => setMenuOpen(false)}
                       className={`group flex items-center justify-between border border-primary/20 px-4 py-3 font-mono text-xs uppercase tracking-widest transition-all duration-300 ${isActive
-                          ? "bg-primary/10 text-primary text-glow border-primary/50"
-                          : "text-foreground/70 hover:text-primary hover:border-primary/40 hover:bg-card/30"
+                        ? "bg-primary/10 text-primary text-glow border-primary/50"
+                        : "text-foreground/70 hover:text-primary hover:border-primary/40 hover:bg-card/30"
                         }`}
                       style={{ transitionDelay: `${index * 40}ms` }}
                     >
