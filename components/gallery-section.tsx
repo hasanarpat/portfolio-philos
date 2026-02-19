@@ -8,51 +8,51 @@ import Link from "next/link"
 const galleryItems = [
   {
     type: "photo",
-    title: "Midnight Architecture",
+    title: "Night Transit",
     category: "Photography",
-    description: "Brutalist structures in nocturnal silence",
-    image: "/dark-brutalist-architecture-at-night.png",
-    slug: "midnight-architecture",
+    description: "City light studies and urban reflections",
+    image: "/observability-dashboard-dark-cyberpunk.png",
+    slug: "night-transit",
   },
   {
     type: "art",
-    title: "Digital Decay",
+    title: "Protocol Bloom",
     category: "Generative Art",
-    description: "Algorithmic exploration of entropy and form",
-    image: "/abstract-dark-digital-art-glitch-aesthetic.png",
-    slug: "digital-decay",
+    description: "Visual study of protocol choreography",
+    image: "/network-protocol-3d-visualization-cyberpunk.png",
+    slug: "protocol-bloom",
   },
   {
     type: "blog",
-    title: "On Building Systems That Last",
-    category: "Engineering Essays",
-    description: "Thoughts on long-term thinking in software architecture",
-    date: "2024.01.15",
-    slug: "on-building-systems-that-last",
+    title: "Ship logs: the invisible costs of caching",
+    category: "Systems Engineering",
+    description: "Why misses are more expensive than hits",
+    date: "2024.11.08",
+    slug: "ship-logs-invisible-costs-of-caching",
   },
   {
     type: "photo",
-    title: "Industrial Ruins",
+    title: "Substrate",
     category: "Photography",
-    description: "Abandoned factories and forgotten machinery",
-    image: "/abandoned-industrial-factory-ruins-dark-moody.png",
-    slug: "industrial-ruins",
+    description: "Texture catalog of digital surfaces",
+    image: "/abstract-dark-digital-art-glitch-aesthetic.png",
+    slug: "substrate",
   },
   {
     type: "art",
-    title: "Neural Patterns",
+    title: "Neural Lattice",
     category: "Generative Art",
-    description: "Machine learning visualizations",
+    description: "Visualizing weight distribution",
     image: "/neural-network-visualization-dark-cyberpunk.png",
-    slug: "neural-patterns",
+    slug: "neural-lattice",
   },
   {
     type: "blog",
-    title: "The Philosophy of Code",
+    title: "A build note on latency budgets",
     category: "Technical Writing",
-    description: "Why engineering is more than logic",
-    date: "2023.12.08",
-    slug: "the-philosophy-of-code",
+    description: "Designing backpressure with human models",
+    date: "2024.08.12",
+    slug: "latency-budgets-human-scale",
   },
 ]
 
@@ -67,17 +67,15 @@ export function GallerySection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-16 space-y-8">
-          <h2 
-            className={`font-serif text-4xl md:text-5xl lg:text-6xl text-foreground transition-all duration-700 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+          <h2
+            className={`font-serif text-4xl md:text-5xl lg:text-6xl text-foreground transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
           >
             Archive <span className="text-muted-foreground font-mono text-2xl md:text-3xl">//</span>
           </h2>
-          <p 
-            className={`text-muted-foreground font-mono text-sm md:text-base max-w-2xl transition-all duration-700 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+          <p
+            className={`text-muted-foreground font-mono text-sm md:text-base max-w-2xl transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
             style={{ transitionDelay: "0.1s" }}
           >
             A collection of thoughts, imagery, and experiments that exist outside the bounds of conventional
@@ -85,21 +83,19 @@ export function GallerySection() {
           </p>
 
           {/* Filters */}
-          <div 
-            className={`flex flex-wrap gap-4 font-mono text-sm transition-all duration-700 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+          <div
+            className={`flex flex-wrap gap-4 font-mono text-sm transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
             style={{ transitionDelay: "0.2s" }}
           >
             {["all", "photo", "art", "blog"].map((filterType) => (
               <button
                 key={filterType}
                 onClick={() => setFilter(filterType as typeof filter)}
-                className={`px-4 py-2 border transition-all duration-300 hover-lift ${
-                  filter === filterType
-                    ? "border-primary bg-primary/10 text-primary box-glow"
-                    : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
-                }`}
+                className={`px-4 py-2 border transition-all duration-300 hover-lift ${filter === filterType
+                  ? "border-primary bg-primary/10 text-primary box-glow"
+                  : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                  }`}
               >
                 [{filterType.toUpperCase()}]
               </button>
@@ -111,11 +107,10 @@ export function GallerySection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredItems.map((item, index) => (
             <Link
-              href={`/archive/${item.type}/${item.title.toLowerCase().replace(/\s+/g, "-")}`}
+              href={`/archive/${item.type}/${item.slug}`}
               key={`${item.title}-${index}`}
-              className={`group relative border border-border hover:border-primary/50 transition-all duration-500 overflow-hidden bg-card/50 backdrop-blur-sm hover-lift cursor-pointer ${
-                item.type === "blog" ? "md:col-span-1" : index % 5 === 0 ? "md:col-span-2 md:row-span-2" : ""
-              } ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+              className={`group relative border border-border hover:border-primary/50 transition-all duration-500 overflow-hidden bg-card/50 backdrop-blur-sm hover-lift cursor-pointer ${item.type === "blog" ? "md:col-span-1" : index % 5 === 0 ? "md:col-span-2 md:row-span-2" : ""
+                } ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
               style={{ transitionDelay: `${0.3 + index * 0.08}s` }}
             >
               {/* Visual Items (Photo/Art) */}
@@ -145,9 +140,8 @@ export function GallerySection() {
               <div className={`${item.type === "blog" ? "p-8" : "absolute bottom-0 left-0 right-0 p-6"} space-y-2`}>
                 <div className="font-mono text-xs text-secondary uppercase tracking-widest">{item.category}</div>
                 <h3
-                  className={`${
-                    item.type === "blog" ? "font-serif text-2xl md:text-3xl" : "font-serif text-xl md:text-2xl"
-                  } text-foreground group-hover:text-primary transition-colors duration-300`}
+                  className={`${item.type === "blog" ? "font-serif text-2xl md:text-3xl" : "font-serif text-xl md:text-2xl"
+                    } text-foreground group-hover:text-primary transition-colors duration-300`}
                 >
                   {item.title}
                 </h3>
