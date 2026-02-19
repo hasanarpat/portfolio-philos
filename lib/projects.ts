@@ -929,6 +929,130 @@ A modal intervention layer intercepts the checkout flow if consistency checks fa
 DupliCheck demonstrates that client-side state integrity does not require heavy frameworks. With precise DOM observation and intelligent heuristics, we can build robust, performance-neutral reliability tools that improve the economic efficiency of the user's digital experience.
 `,
     },
+    "retro-diner-delight": {
+        id: 11,
+        slug: "retro-diner-delight",
+        type: ["Production System", "Web Application", "UX/UI Design"],
+        title: "Retro Diner Delight (Nep's Burger)",
+        status: "LIVE",
+        year: "2026",
+        summary:
+            "A UX-focused restaurant web application blending 80s aesthetics with modern React performance. Designed with a 'Nostalgia meets Performance' philosophy.",
+        description:
+            "A UX-focused restaurant web application blending 1970s and 80s American 'Diner' culture with modern web technologies. Designed with the 'Nostalgia meets Performance' philosophy, the interface aims to provide visitors with not just a menu, but a digital atmosphere.",
+        stack: ["React 18", "Vite", "TypeScript", "Tailwind CSS", "Shadcn UI", "Framer Motion"],
+        metrics: ["99+ Lighthouse Score", "Zero-Latency Transitions", "Responsive Design"],
+        image: "/retro-diner/cover.png",
+        url: "https://nepps-burger.vercel.app/",
+        github: "https://github.com/hasanarpat/retro-diner-delight",
+        notes: [
+            "AI-Assisted Rapid Prototyping refinement.",
+            "Immersive design with vintage grain and neon effects.",
+            "Data-driven agnostic component architecture.",
+        ],
+        techAnalysis: {
+            title: "Nostalgia meets Performance",
+            content:
+                "The project began with AI-assisted rapid prototyping and was refined through human-in-the-loop engineering. 'Immersive design' principles were applied to capture the user's attention immediately, using a curated neon color palette and retro typography (Bebas Neue) without sacrificing modern web performance metrics.",
+        },
+        directoryMap: `src/
+├── components/         # Atomic Architecture (Header, Hero, Menu)
+├── data/               # Centralized Data Store (Menu, Allergens)
+│   └── menuData.ts     # Typed Agnostic Content
+├── pages/              # Route Components (Index, Menu, Contact)
+├── styles/             # Global Styles & Animation Keyframes
+│   └── index.css       # Tailwind Directives & Neon Effects
+└── App.tsx             # Root Application Layout`,
+        workflows: [
+            {
+                title: "Data-Driven Menu System",
+                steps: [
+                    "Maintain menu content in centralized 'menuData.ts'.",
+                    "Type safety ensures consistency across components.",
+                    "UI components render agnostically based on data injection.",
+                    "Updates require zero whitespace code changes.",
+                ],
+            },
+            {
+                title: "Immersive Initial Load",
+                steps: [
+                    "Critical CSS inlined for immediate paint.",
+                    "Neon pulse animations triggered after hydration.",
+                    "Vintage grain overlay applied via CSS pointer-events-none.",
+                ],
+            },
+        ],
+        uxInsights: [
+            {
+                title: "The Vibe Architecture",
+                description:
+                    "Color choices (Neon Red, Diner Cream) and typography (Bebas Neue) are not just styling but core UX drivers, establishing the 'Diner' atmosphere instantly.",
+            },
+            {
+                title: "Story-Driven Menu",
+                description:
+                    "Categorized structure allows users to scan the menu like a story, rather than using rigid tabs, improving engagement and time-on-site.",
+            },
+        ],
+        fullContent: `
+# Portfolio Report: Retro Diner Delight (Nep's Burger)
+
+## 1. Executive Summary
+This project is a UX-focused restaurant web application that blends 1970s and 80s American "Diner" culture with modern web technologies. Designed with the **"Nostalgia meets Performance"** philosophy, the interface aims to provide visitors with not just a menu, but a digital atmosphere.
+
+The project began with **AI-assisted rapid prototyping** and was refined through **human-in-the-loop engineering**, resulting in a polished, performant product.
+
+## 2. Technical Infrastructure & Tech Stack
+The most up-to-date and performant tools of the modern frontend architecture were selected:
+
+*   **Core Framework:** \`React 18\` (Component-based architecture)
+*   **Build Tool:** \`Vite\` (High-performance HMR and optimized build processes)
+*   **Language:** \`TypeScript\` (Type safety and maintainability)
+*   **Styling & Design System:**
+    *   \`Tailwind CSS\`: Utility-first approach for rapid styling development.
+    *   \`Shadcn UI\`: Accessible and customizable component library.
+    *   \`Lucide React\`: Modern and lightweight icon set.
+*   **Animations:** \`tailwindcss-animate\` and CSS keyframes (Neon pulse, slide-up effects).
+*   **Package Management:** \`npm\`
+
+## 3. Design Decisions & Engineering Approach
+
+### 3.1. Aesthetics & Atmosphere (The "Vibe")
+**"Immersive design"** principles were applied to capture the user's attention immediately upon entry.
+*   **Color Palette:** *Neon Red* (\`hsl(0 85% 50%)\`), *Diner Cream* (\`hsl(45 40% 95%)\`), and *Checkered Dark* (\`hsl(0 0% 15%)\`) tones were chosen to reflect the classic diner atmosphere.
+*   **Typography:** **Bebas Neue** was used for a strong, retro stance in headings, while **Inter** was selected for readability in body text.
+*   **Visual Effects:** A CSS-generated \`vintage-grain\` layer and \`neon-pulse\` animations create the feeling of a "living" space rather than a static page.
+
+### 3.2. Data-Driven Architecture
+The application was built on **agnostic components** to simplify content management.
+*   \`src/data/menuData.ts\`: Menu content, allergen information, and prices are maintained in a centralized data structure. This allows menu updates without modifying the UI code.
+*   Type safety (\`interface MenuItem\`, \`interface MenuCategory\`) ensures data consistency.
+
+## 4. Development Process & Git History Analysis
+
+The version control history (Git History) reveals the evolution of a modern software development lifecycle (SDLC):
+
+### Phase 1: Infrastructure & Scaffolding (January 2026)
+*   **Project Inception:** The project scaffolding was created using \`Lovable\` and AI assistants.
+*   **Rapid Prototyping:** Basic UI blocks and grid systems were rapidly stood up by the \`gpt-engineer-app\` bot on January 26-27.
+*   *Key Pivot:* Initial "Neon storefront" visuals were experimented with, but later simplified to prioritize performance and a cleaner design.
+
+### Phase 2: Human Touch & Refinement (February 2026)
+*   **Handover:** Post-January, the development process shifted entirely to manual control.
+*   **Component Architecture:** Atomic components like \`Header\`, \`Footer\`, and \`Hero\` were extracted to prevent code duplication.
+*   **Page Structure:** To enrich the single-page experience, \`Index\`, \`Menu\`, and \`Contact\` sections were optimized.
+*   **Content Integration:** Real menu data (Smash Burger varieties, ingredients) was integrated into the system.
+
+## 5. Key Features Implemented
+1.  **Responsive Hero Section:** A mobile-first approach designed with a "Order Now" CTA (Call to Action) focus.
+2.  **Categorized Menu:** A fluid structure that allows users to scan the menu like a story, rather than using rigid tabs or filters.
+3.  **Social Proof:** Trust-building elements including Google ratings and a customer reviews component.
+4.  **Contact Integration:** Design focused on conversion to physical store visits via Click-to-Call and Map directions.
+
+## 6. Conclusion
+This project not only digitized a restaurant menu but also demonstrated how modern web technologies (React, Tailwind) can be harmonized with a retro design language. **Code quality, type safety, and modular architecture** form a solid foundation for the project's future scalability (new branches, online ordering system, etc.).
+        `,
+    },
 }
 
 export function getAllProjects() {
